@@ -3015,6 +3015,8 @@
 
     function setTariff(type, rate, term, element) {
       currentRate = rate;
+      currentTariffPrice = rate;
+      currentTariffTerm = term;
       currentTerm = term;
       document.querySelectorAll('.tariff-option').forEach(opt => opt.classList.remove('active'));
       if (element) {
