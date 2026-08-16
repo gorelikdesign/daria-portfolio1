@@ -2,13 +2,12 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Дарья Горелик | Студия дизайна интерьера</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -21,7 +20,6 @@
       --sand-accent: #F0ECE4;
       --terracotta: #A45C49;
       --terracotta-dark: #8A4634;
-      --wine: #6B2D38;
       --text-dark: #272220;
       --text-muted: #69625C;
       --border-color: #E2DBD0;
@@ -31,7 +29,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      cursor: default;
+      -webkit-tap-highlight-color: transparent;
     }
 
     html {
@@ -44,73 +42,82 @@
       background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.07' fill-rule='evenodd'%3E%3Cpath d='M0 40c10-5 20-5 30 0s20 5 30 0 20-5 20-5v2c0 0-10 5-20 5s-20-5-30 0-20 5-30 0v-2zm40-40c-5 10-5 20 0 30s5 20 0 30-5 20-5 20h2c0 0 5-10 0-20s-5-20 0-30 5-20 0-30h-2z'/%3E%3Ccircle cx='40' cy='40' r='4'/%3E%3Ccircle cx='40' cy='32' r='2'/%3E%3Ccircle cx='40' cy='48' r='2'/%3E%3Ccircle cx='32' cy='40' r='2'/%3E%3Ccircle cx='48' cy='40' r='2'/%3E%3Ccircle cx='10' cy='10' r='3'/%3E%3Ccircle cx='70' cy='70' r='3'/%3E%3Ccircle cx='10' cy='70' r='3'/%3E%3Ccircle cx='70' cy='10' r='3'/%3E%3C/g%3E%3C/svg%3E");
       color: var(--text-dark);
       line-height: 1.6;
-      padding: 30px 15px;
+      padding: 25px 12px;
+      overflow-x: hidden;
     }
 
-    /* Индикатор прогресса скролла */
+    /* Индикатор скролла */
     #scroll-progress {
       position: fixed;
       top: 0; left: 0;
-      height: 4px;
+      height: 3px;
       width: 0%;
       background: linear-gradient(90deg, var(--terracotta), #D4A373);
       z-index: 9999;
       transition: width 0.1s ease-out;
     }
 
-    /* Интерактивный кастомный курсор */
-    .custom-cursor {
-      position: fixed;
-      top: 0; left: 0;
-      width: 12px;
-      height: 12px;
-      background-color: var(--terracotta);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 10000;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease-out, width 0.25s ease, height 0.25s ease, background 0.25s ease;
+    /* Курсор только для десктопов */
+    @media (hover: hover) and (pointer: fine) {
+      .custom-cursor {
+        position: fixed;
+        top: 0; left: 0;
+        width: 10px;
+        height: 10px;
+        background-color: var(--terracotta);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10000;
+        transform: translate(-50%, -50%);
+        transition: transform 0.08s ease-out, opacity 0.2s ease;
+      }
+
+      .cursor-follower {
+        position: fixed;
+        top: 0; left: 0;
+        width: 36px;
+        height: 36px;
+        border: 1.5px solid var(--olive-deep);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s ease, height 0.3s ease, background 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: transparent;
+      }
+
+      body.hover-view .cursor-follower {
+        width: 70px;
+        height: 70px;
+        background: rgba(62, 75, 49, 0.9);
+        border-color: transparent;
+        color: #FFF;
+        backdrop-filter: blur(4px);
+      }
+
+      body.hover-view .custom-cursor {
+        opacity: 0;
+      }
     }
 
-    .cursor-follower {
-      position: fixed;
-      top: 0; left: 0;
-      width: 38px;
-      height: 38px;
-      border: 1.5px solid var(--olive-deep);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s ease, height 0.3s ease, border-color 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: transparent;
-    }
-
-    body.hover-view .cursor-follower {
-      width: 75px;
-      height: 75px;
-      background: rgba(62, 75, 49, 0.9);
-      border-color: transparent;
-      color: #FFF;
-      backdrop-filter: blur(4px);
-    }
-
-    body.hover-view .custom-cursor {
-      opacity: 0;
+    @media (hover: none) or (pointer: coarse) {
+      .custom-cursor, .cursor-follower {
+        display: none !important;
+      }
     }
 
     .container {
-      max-width: 1280px;
+      max-width: 1260px;
       margin: 0 auto;
       background-color: var(--sand-bg);
       border-radius: 24px;
-      box-shadow: 0 25px 60px rgba(20, 28, 15, 0.35);
+      box-shadow: 0 20px 50px rgba(20, 28, 15, 0.3);
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.6);
       position: relative;
@@ -118,7 +125,7 @@
 
     /* Навигация */
     header {
-      padding: 22px 50px;
+      padding: 18px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -127,21 +134,21 @@
       backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 200;
     }
 
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       text-decoration: none;
       color: var(--text-dark);
-      cursor: pointer;
+      z-index: 210;
     }
 
     .logo-emblem {
-      width: 48px;
-      height: 48px;
+      width: 44px;
+      height: 44px;
       border: 1.5px solid var(--olive-main);
       border-radius: 50%;
       display: flex;
@@ -149,74 +156,134 @@
       justify-content: center;
       font-family: 'Playfair Display', serif;
       font-weight: 600;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       color: var(--olive-deep);
       background: #FFF;
-      position: relative;
-    }
-
-    .logo-emblem::after {
-      content: '';
-      position: absolute;
-      width: 56px;
-      height: 56px;
-      border: 1px dashed var(--olive-soft);
-      border-radius: 50%;
-      opacity: 0.7;
+      flex-shrink: 0;
     }
 
     .logo-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
       text-transform: uppercase;
       color: var(--text-dark);
       display: block;
+      line-height: 1.2;
     }
 
     .logo-subtitle {
-      font-size: 0.7rem;
-      letter-spacing: 2px;
+      font-size: 0.65rem;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--olive-main);
       font-weight: 600;
       display: block;
     }
 
-    nav {
+    nav.nav-desktop {
       display: flex;
-      gap: 30px;
+      gap: 28px;
       align-items: center;
     }
 
-    nav a {
+    nav.nav-desktop a {
       text-decoration: none;
       color: var(--text-dark);
       font-size: 0.88rem;
       font-weight: 500;
       letter-spacing: 0.5px;
       transition: color 0.2s;
-      cursor: pointer;
     }
 
-    nav a:hover {
+    nav.nav-desktop a:hover {
+      color: var(--terracotta);
+    }
+
+    /* Мобильный бургер */
+    .burger-btn {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 32px;
+      height: 26px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      z-index: 210;
+      padding: 0;
+    }
+
+    .burger-btn span {
+      width: 100%;
+      height: 2px;
+      background: var(--text-dark);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .burger-btn.open span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+      background: var(--terracotta);
+    }
+    .burger-btn.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .burger-btn.open span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+      background: var(--terracotta);
+    }
+
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100vh;
+      background: rgba(250, 247, 242, 0.98);
+      backdrop-filter: blur(12px);
+      z-index: 205;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 26px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-20px);
+      transition: all 0.35s ease;
+    }
+
+    .mobile-menu-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .mobile-menu-overlay a {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .mobile-menu-overlay a:hover {
       color: var(--terracotta);
     }
 
     /* Hero */
     .hero {
-      margin: 25px 25px 0 25px;
+      margin: 20px 20px 0 20px;
       background-color: var(--olive-deep);
       border-radius: 20px;
-      padding: 70px 60px;
+      padding: 60px 50px;
       color: #FFF;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 50px;
+      gap: 40px;
       position: relative;
-      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='30' cy='30' r='3'/%3E%3Cpath d='M30 15v30M15 30h30' stroke='%23ffffff' stroke-opacity='0.05' stroke-width='1'/%3E%3C/g%3E%3C/svg%3E");
     }
 
     .hero-text {
@@ -230,49 +297,52 @@
       gap: 8px;
       background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.25);
-      padding: 6px 18px;
+      padding: 6px 16px;
       border-radius: 30px;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: 3.2rem;
-      line-height: 1.16;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.18;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .hero-desc {
-      font-size: 1.05rem;
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
       color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 35px;
+      margin-bottom: 30px;
       font-weight: 300;
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
     .hero-actions {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 15px;
       flex-wrap: wrap;
     }
 
     .btn {
-      display: inline-block;
-      padding: 14px 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 30px;
       border-radius: 8px;
       font-size: 0.88rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 1px;
       text-transform: uppercase;
       text-decoration: none;
-      transition: all 0.3s;
+      transition: all 0.25s ease;
       cursor: pointer;
       border: none;
+      text-align: center;
     }
 
     .btn-primary {
@@ -283,7 +353,7 @@
     .btn-primary:hover {
       background-color: var(--terracotta-dark);
       transform: translateY(-2px);
-      box-shadow: 0 10px 22px rgba(164, 92, 73, 0.35);
+      box-shadow: 0 10px 20px rgba(164, 92, 73, 0.35);
     }
 
     .btn-outline {
@@ -306,16 +376,16 @@
 
     .hero-photo-frame {
       position: relative;
-      padding: 10px;
+      padding: 8px;
       border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 18px;
       background: rgba(255, 255, 255, 0.05);
-      transition: transform 0.3s ease;
     }
 
     .hero-photo-frame img {
-      width: 330px;
-      height: 420px;
+      width: 320px;
+      max-width: 100%;
+      height: 400px;
       object-fit: cover;
       border-radius: 12px;
       display: block;
@@ -328,7 +398,7 @@
       right: -15px;
       background: var(--sand-card);
       color: var(--text-dark);
-      padding: 14px 22px;
+      padding: 12px 18px;
       border-radius: 12px;
       box-shadow: 0 12px 25px rgba(0,0,0,0.15);
       border: 1px solid var(--border-color);
@@ -336,57 +406,46 @@
 
     .hero-accent-tag strong {
       font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       display: block;
       color: var(--olive-deep);
     }
 
     .hero-accent-tag span {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: var(--text-muted);
     }
 
-    /* Анимации появления секций */
-    .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .reveal-on-scroll.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
+    /* Секции */
     section {
-      padding: 85px 50px;
+      padding: 70px 40px;
     }
 
     .section-header {
       text-align: center;
-      max-width: 720px;
-      margin: 0 auto 50px auto;
+      max-width: 700px;
+      margin: 0 auto 45px auto;
     }
 
     .section-subtitle {
-      font-size: 0.8rem;
-      letter-spacing: 2.5px;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--olive-main);
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       display: block;
     }
 
     .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
       color: var(--text-dark);
       font-weight: 600;
       position: relative;
-      padding-bottom: 20px;
+      padding-bottom: 18px;
     }
 
     .section-title::after {
@@ -395,42 +454,40 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 50px;
+      width: 45px;
       height: 2px;
       background: var(--olive-main);
     }
 
-    /* ПРОЕКТЫ (3D Tilt карточки) */
+    /* ПРОЕКТЫ */
     .projects-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 35px;
-      perspective: 1000px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
     }
 
     .project-card-btn {
       background: var(--sand-card);
       border: 1.5px solid var(--border-color);
-      border-radius: 20px;
+      border-radius: 18px;
       overflow: hidden;
       cursor: pointer;
       text-align: left;
-      transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 10px 25px rgba(0,0,0,0.04);
       display: flex;
       flex-direction: column;
-      position: relative;
-      transform-style: preserve-3d;
     }
 
     .project-card-btn:hover {
-      box-shadow: 0 20px 40px rgba(67, 80, 53, 0.18);
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px rgba(67, 80, 53, 0.16);
       border-color: var(--olive-light);
     }
 
     .project-preview-wrap {
       position: relative;
-      height: 300px;
+      height: 280px;
       overflow: hidden;
       background: #e4dfd7;
     }
@@ -439,30 +496,30 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s ease;
+      transition: transform 0.5s ease;
     }
 
     .project-card-btn:hover .project-preview-img {
-      transform: scale(1.06);
+      transform: scale(1.05);
     }
 
     .project-count-badge {
       position: absolute;
-      top: 18px;
-      right: 18px;
+      top: 14px;
+      right: 14px;
       background: rgba(42, 37, 34, 0.85);
       backdrop-filter: blur(6px);
       color: #FFF;
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 20px;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       letter-spacing: 1px;
       text-transform: uppercase;
       font-weight: 500;
     }
 
     .project-card-content {
-      padding: 30px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -470,50 +527,50 @@
     }
 
     .project-tag {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--olive-main);
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       display: block;
     }
 
     .project-card-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.7rem;
+      font-size: 1.5rem;
       color: var(--text-dark);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       line-height: 1.25;
     }
 
     .project-card-desc {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 22px;
+      line-height: 1.55;
+      margin-bottom: 18px;
     }
 
     .project-meta-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      padding: 15px 0;
+      gap: 10px;
+      padding: 12px 0;
       border-top: 1px solid var(--border-color);
       border-bottom: 1px solid var(--border-color);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .meta-item span {
       display: block;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       text-transform: uppercase;
       color: var(--text-muted);
       letter-spacing: 1px;
     }
 
     .meta-item strong {
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       color: var(--text-dark);
       font-weight: 600;
     }
@@ -523,45 +580,38 @@
       align-items: center;
       justify-content: space-between;
       background: var(--sand-accent);
-      padding: 12px 20px;
-      border-radius: 10px;
+      padding: 12px 18px;
+      border-radius: 8px;
       color: var(--olive-deep);
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 1px;
-      transition: background 0.3s, color 0.3s;
     }
 
-    .project-card-btn:hover .project-btn-cta {
-      background: var(--olive-deep);
-      color: #FFF;
-    }
-
-    /* ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР СТОИМОСТИ */
+    /* КАЛЬКУЛЯТОР */
     .calculator-wrapper {
       background: var(--sand-card);
       border: 1px solid var(--border-color);
-      border-radius: 20px;
-      padding: 45px 50px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      border-radius: 18px;
+      padding: 40px;
     }
 
     .calc-grid {
       display: grid;
       grid-template-columns: 1.4fr 1fr;
-      gap: 45px;
+      gap: 40px;
       align-items: center;
     }
 
     .calc-control-group {
-      margin-bottom: 25px;
+      margin-bottom: 22px;
     }
 
     .calc-label {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
       color: var(--olive-deep);
       font-weight: 600;
       margin-bottom: 10px;
@@ -585,23 +635,22 @@
       border-radius: 50%;
       background: var(--terracotta);
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(164, 92, 73, 0.4);
     }
 
     .tariff-selector {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      gap: 10px;
     }
 
     .tariff-option {
       background: var(--sand-accent);
       border: 1.5px solid var(--border-color);
-      border-radius: 12px;
-      padding: 15px;
+      border-radius: 10px;
+      padding: 14px 10px;
       cursor: pointer;
       text-align: center;
-      transition: all 0.25s ease;
+      transition: all 0.2s ease;
     }
 
     .tariff-option.active {
@@ -611,83 +660,83 @@
     }
 
     .tariff-option.active span {
-      color: rgba(255,255,255,0.8);
+      color: rgba(255,255,255,0.85);
     }
 
     .tariff-option h5 {
-      font-size: 0.95rem;
-      margin-bottom: 4px;
+      font-size: 0.88rem;
+      margin-bottom: 3px;
     }
 
     .tariff-option span {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
     }
 
     .calc-summary-card {
       background: var(--olive-deep);
       color: #FFF;
-      padding: 35px;
-      border-radius: 16px;
+      padding: 30px;
+      border-radius: 14px;
       text-align: center;
-      box-shadow: 0 15px 35px rgba(62, 75, 49, 0.25);
     }
 
     .calc-summary-card h4 {
-      font-size: 0.85rem;
-      letter-spacing: 2px;
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       opacity: 0.8;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .calc-price {
       font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
+      font-size: clamp(2rem, 3.5vw, 2.5rem);
       font-weight: 700;
       color: #FFF;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .calc-term {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       opacity: 0.9;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
-    /* FAQ (Аккордеон) */
+    /* FAQ */
     .faq-list {
-      max-width: 850px;
+      max-width: 800px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
 
     .faq-item {
       background: var(--sand-card);
       border: 1px solid var(--border-color);
-      border-radius: 14px;
+      border-radius: 12px;
       overflow: hidden;
-      transition: border-color 0.2s;
     }
 
     .faq-question {
-      padding: 22px 28px;
+      padding: 18px 22px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
       font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: var(--text-dark);
       font-weight: 600;
+      gap: 12px;
     }
 
     .faq-icon {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       color: var(--olive-main);
       transition: transform 0.3s ease;
+      flex-shrink: 0;
     }
 
     .faq-item.active .faq-icon {
@@ -698,61 +747,90 @@
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.35s ease, padding 0.35s ease;
-      padding: 0 28px;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 22px;
       color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
+      font-size: 0.9rem;
+      line-height: 1.6;
     }
 
     .faq-item.active .faq-answer {
-      max-height: 200px;
-      padding-bottom: 22px;
+      max-height: 250px;
+      padding-bottom: 18px;
+    }
+
+    /* О дизайнере */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .about-card {
+      background: var(--sand-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 30px 24px;
+    }
+
+    .about-card-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--olive-light);
+      margin-bottom: 10px;
+    }
+
+    .about-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: var(--text-dark);
+    }
+
+    .about-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
     }
 
     /* Контакты */
     .contact-wrapper {
       background: var(--sand-accent);
-      border-radius: 20px;
-      padding: 60px;
+      border-radius: 18px;
+      padding: 45px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 50px;
+      gap: 40px;
       border: 1px solid var(--border-color);
     }
 
     .contact-info h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.1rem;
-      margin-bottom: 14px;
+      font-size: 1.9rem;
+      margin-bottom: 12px;
       color: var(--text-dark);
     }
 
     .contact-info p {
       color: var(--text-muted);
-      margin-bottom: 30px;
-      font-size: 1rem;
+      margin-bottom: 25px;
+      font-size: 0.95rem;
     }
 
     .contact-details {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin-bottom: 30px;
+      gap: 14px;
+      margin-bottom: 25px;
     }
 
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       color: var(--text-dark);
-      font-size: 1rem;
+      font-size: 0.95rem;
       text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .contact-item:hover {
-      color: var(--terracotta);
     }
 
     .contact-item-dot {
@@ -760,46 +838,40 @@
       height: 8px;
       background: var(--terracotta);
       border-radius: 50%;
+      flex-shrink: 0;
     }
 
     .social-links-grid {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
     .social-tag {
       background: #FFF;
       border: 1px solid var(--border-color);
-      padding: 10px 18px;
-      border-radius: 30px;
+      padding: 8px 16px;
+      border-radius: 25px;
       text-decoration: none;
       color: var(--text-dark);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 500;
-      transition: all 0.25s;
-    }
-
-    .social-tag:hover {
-      background: var(--olive-deep);
-      color: #FFF;
-      border-color: var(--olive-deep);
     }
 
     .contact-form {
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 15px;
     }
 
     .form-group {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
     }
 
     .form-group label {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       font-weight: 500;
@@ -808,46 +880,38 @@
 
     .form-input, .form-textarea {
       width: 100%;
-      padding: 14px 18px;
+      padding: 12px 16px;
       background: #FFF;
       border: 1px solid var(--border-color);
       border-radius: 8px;
       font-family: inherit;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--text-dark);
       outline: none;
-      transition: border-color 0.2s;
     }
 
     .form-input:focus, .form-textarea:focus {
       border-color: var(--olive-main);
     }
 
-    /* Floating Action Button (Быстрый контакт) */
+    /* Плавающая кнопка для телефонов */
     .fab-contact {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
+      bottom: max(20px, env(safe-area-inset-bottom));
+      right: 18px;
       background: var(--terracotta);
       color: #FFF;
-      padding: 14px 24px;
-      border-radius: 40px;
+      padding: 12px 20px;
+      border-radius: 35px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      box-shadow: 0 10px 25px rgba(164, 92, 73, 0.4);
-      z-index: 990;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 20px rgba(164, 92, 73, 0.4);
+      z-index: 190;
       display: flex;
       align-items: center;
-      gap: 10px;
-      transition: transform 0.25s ease, background 0.25s ease;
-    }
-
-    .fab-contact:hover {
-      transform: translateY(-3px) scale(1.03);
-      background: var(--terracotta-dark);
+      gap: 8px;
     }
 
     /* Модальное окно */
@@ -856,88 +920,74 @@
       position: fixed;
       z-index: 1000;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(26, 33, 20, 0.92);
+      background: rgba(26, 33, 20, 0.94);
       backdrop-filter: blur(8px);
       overflow-y: auto;
-      padding: 40px 20px;
+      padding: 30px 15px;
     }
 
     .modal-dialog {
-      max-width: 1100px;
+      max-width: 1050px;
       margin: 0 auto;
       background: var(--sand-bg);
-      border-radius: 24px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
-      border: 1px solid rgba(255,255,255,0.4);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
       position: relative;
     }
 
     .modal-header-banner {
       background: var(--olive-deep);
       color: #FFF;
-      padding: 40px 45px;
+      padding: 35px 30px;
       position: relative;
     }
 
     .btn-close-modal {
       position: absolute;
-      top: 25px;
-      right: 25px;
+      top: 18px;
+      right: 18px;
       background: rgba(255,255,255,0.15);
       border: none;
       color: #FFF;
-      width: 42px;
-      height: 42px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.2s, transform 0.2s;
-    }
-
-    .btn-close-modal:hover {
-      background: var(--terracotta);
-      transform: scale(1.08);
     }
 
     .modal-title {
       font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      margin-bottom: 10px;
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      margin-bottom: 8px;
     }
 
     .modal-subtitle {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: rgba(255,255,255,0.85);
-      max-width: 750px;
-      line-height: 1.6;
+      line-height: 1.55;
     }
 
     .modal-body {
-      padding: 40px 45px;
+      padding: 30px 25px;
     }
 
     .modal-gallery-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 25px;
+      gap: 20px;
     }
 
     .modal-photo-card {
       background: var(--sand-card);
       border: 1px solid var(--border-color);
-      border-radius: 14px;
+      border-radius: 12px;
       overflow: hidden;
       cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .modal-photo-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.1);
     }
 
     .modal-photo-card.full-width {
@@ -946,14 +996,14 @@
 
     .modal-photo-card img {
       width: 100%;
-      height: 380px;
+      height: 340px;
       object-fit: cover;
       display: block;
       background: #eee;
     }
 
     .modal-photo-info {
-      padding: 15px 20px;
+      padding: 14px 18px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -962,12 +1012,12 @@
 
     .modal-photo-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--text-dark);
     }
 
     .modal-photo-zone {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: var(--olive-main);
@@ -980,39 +1030,131 @@
       position: fixed;
       z-index: 2000;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(15, 20, 10, 0.95);
+      background: rgba(15, 20, 10, 0.96);
       backdrop-filter: blur(6px);
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      padding: 20px;
+      padding: 15px;
     }
 
     .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 12px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+      max-width: 95%;
+      max-height: 90vh;
+      border-radius: 8px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+      object-fit: contain;
     }
 
     footer {
-      padding: 30px 50px;
+      padding: 25px 40px;
       border-top: 1px solid var(--border-color);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    @media (max-width: 992px) {
-      .hero { flex-direction: column; text-align: center; padding: 50px 30px; }
-      .hero-actions { justify-content: center; }
-      .calc-grid, .modal-gallery-grid, .contact-wrapper { grid-template-columns: 1fr; }
-      .modal-photo-card.full-width { grid-column: span 1; }
-      header { padding: 20px 30px; flex-direction: column; gap: 15px; }
-      section { padding: 50px 25px; }
-      .custom-cursor, .cursor-follower { display: none !important; }
+    /* АДАПТИВНОСТЬ ПОД МОБИЛЬНЫЕ УСТРОЙСТВА */
+    @media (max-width: 900px) {
+      body {
+        padding: 10px 6px;
+      }
+
+      .container {
+        border-radius: 16px;
+      }
+
+      header {
+        padding: 14px 20px;
+      }
+
+      nav.nav-desktop {
+        display: none;
+      }
+
+      .burger-btn {
+        display: flex;
+      }
+
+      .hero {
+        margin: 12px 12px 0 12px;
+        padding: 35px 20px;
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 25px;
+      }
+
+      .hero-actions {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-photo-frame img {
+        width: 250px;
+        height: 320px;
+      }
+
+      .hero-accent-tag {
+        bottom: -10px;
+        right: 50%;
+        transform: translateX(50%);
+        white-space: nowrap;
+        padding: 8px 14px;
+      }
+
+      section {
+        padding: 45px 18px;
+      }
+
+      .calc-grid, .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 24px 18px;
+      }
+
+      .tariff-selector {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .modal-photo-card.full-width {
+        grid-column: span 1;
+      }
+
+      .modal-photo-card img {
+        height: 240px;
+      }
+
+      .project-modal {
+        padding: 10px;
+      }
+
+      .modal-header-banner {
+        padding: 25px 18px;
+      }
+
+      .modal-body {
+        padding: 20px 14px;
+      }
+
+      footer {
+        padding: 20px 18px;
+        text-align: center;
+        flex-direction: column;
+        gap: 8px;
+      }
     }
   </style>
 </head>
@@ -1021,14 +1163,23 @@
   <!-- Скролл-индикатор -->
   <div id="scroll-progress"></div>
 
-  <!-- Кастомный курсор -->
+  <!-- Кастомный курсор (для ПК) -->
   <div class="custom-cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursor-follower"></div>
 
-  <!-- Плавающая кнопка связи -->
+  <!-- Плавающая кнопка для быстрой связи -->
   <a href="https://t.me/+79627268847" target="_blank" class="fab-contact">
-    <span>💬 Написать Дарье</span>
+    <span>💬 Написать</span>
   </a>
+
+  <!-- Мобильное меню -->
+  <div class="mobile-menu-overlay" id="mobile-menu">
+    <a href="#about" onclick="toggleMobileMenu()">О дизайнере</a>
+    <a href="#projects" onclick="toggleMobileMenu()">Проекты</a>
+    <a href="#calc" onclick="toggleMobileMenu()">Калькулятор</a>
+    <a href="#faq" onclick="toggleMobileMenu()">FAQ</a>
+    <a href="#contacts" onclick="toggleMobileMenu()">Контакты</a>
+  </div>
 
   <div class="container">
     
@@ -1038,16 +1189,25 @@
         <div class="logo-emblem">DG</div>
         <div class="logo-text">
           <span class="logo-title">Дарья Горелик</span>
-          <span class="logo-subtitle">Interior Architecture & Design</span>
+          <span class="logo-subtitle">Interior Architecture</span>
         </div>
       </a>
-      <nav>
+
+      <!-- Меню для ПК -->
+      <nav class="nav-desktop">
         <a href="#about">О дизайнере</a>
         <a href="#projects">Проекты</a>
         <a href="#calc">Калькулятор</a>
         <a href="#faq">FAQ</a>
         <a href="#contacts">Контакты</a>
       </nav>
+
+      <!-- Бургер-кнопка для мобильных -->
+      <button class="burger-btn" id="burger-toggle" onclick="toggleMobileMenu()" aria-label="Открыть меню">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </header>
 
     <!-- Hero -->
@@ -1055,7 +1215,7 @@
       <div class="hero-text">
         <div class="hero-badge">Студия дизайна интерьера</div>
         <h1 class="hero-title">Интерьеры со смыслом, характером и светом</h1>
-        <p class="hero-desc">Разработка авторских дизайн-проектов под ключ: от планировочных концепций и 3D-визуализации до детальных строительных чертежей и авторского надзора.</p>
+        <p class="hero-desc">Разработка авторских дизайн-проектов под ключ: от планировочных концепций и 3D-визуализаций до рабочих чертежей и авторского сопровождения.</p>
         <div class="hero-actions">
           <a href="#calc" class="btn btn-primary">Рассчитать стоимость</a>
           <a href="#projects" class="btn btn-outline">Смотреть проекты</a>
@@ -1063,7 +1223,7 @@
       </div>
       <div class="hero-photo-wrap">
         <div class="hero-photo-frame hover-trigger" data-hover-label="DARIA">
-          <img src="daria.jpg" alt="Дарья Горелик — Дизайнер интерьера" data-name="daria.jpg">
+          <img src="daria.jpg" alt="Дарья Горелик — Дизайнер интерьера" data-name="daria.jpg" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600'">
           <div class="hero-accent-tag">
             <strong>Дарья Горелик</strong>
             <span>Автор дизайн-проектов</span>
@@ -1073,7 +1233,7 @@
     </section>
 
     <!-- РАЗДЕЛ "ВЫПОЛНЕННЫЕ ПРОЕКТЫ" -->
-    <section id="projects" class="reveal-on-scroll">
+    <section id="projects">
       <div class="section-header">
         <span class="section-subtitle">Портфолио</span>
         <h2 class="section-title">Выполненные проекты</h2>
@@ -1081,10 +1241,10 @@
 
       <div class="projects-container">
         
-        <!-- КАРТОЧКА ПРОЕКТА КРОНШТАДТ С 3D TILT -->
-        <div class="project-card-btn tilt-card hover-trigger" data-hover-label="OPEN" onclick="openProjectModal('modal-kronstadt')">
+        <!-- КАРТОЧКА ПРОЕКТА КРОНШТАДТ -->
+        <div class="project-card-btn hover-trigger" data-hover-label="OPEN" onclick="openProjectModal('modal-kronstadt')">
           <div class="project-preview-wrap">
-            <img class="project-preview-img" src="4.jpg" alt="Апартаменты в Кронштадте" data-name="4.jpg">
+            <img class="project-preview-img" src="4.jpg" alt="Апартаменты в Кронштадте" data-name="4.jpg" onerror="this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800'">
             <div class="project-count-badge">Кейс • 10 ракурсов</div>
           </div>
           <div class="project-card-content">
@@ -1103,11 +1263,11 @@
                   <strong>Contemporary Eclectic</strong>
                 </div>
                 <div class="meta-item">
-                  <span>Зоны проекта</span>
-                  <strong>Гостиная, Кухня, Спальня, Гардероб</strong>
+                  <span>Зоны</span>
+                  <strong>Гостиная, Спальня, Кухня</strong>
                 </div>
                 <div class="meta-item">
-                  <span>Срок разработки</span>
+                  <span>Срок</span>
                   <strong>1.5 месяца</strong>
                 </div>
               </div>
@@ -1121,20 +1281,20 @@
         </div>
 
         <!-- ТИЗЕР БУДУЩЕГО ПРОЕКТА -->
-        <div class="project-card-btn" style="background: var(--sand-accent); border-style: dashed; justify-content: center; align-items: center; text-align: center; padding: 40px 30px;">
-          <div style="font-family: 'Playfair Display', serif; font-size: 2.6rem; color: var(--olive-light); margin-bottom: 12px;">DG</div>
-          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--text-dark); margin-bottom: 10px;">Проект в реализации</h3>
-          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 25px; max-width: 320px;">Видовая квартира в Санкт-Петербурге. Ведутся отделочные работы и заказ заказных позиций мебели.</p>
-          <a href="#contacts" class="btn btn-outline" style="border-color: var(--olive-deep); color: var(--olive-deep);">Обсудить ваш проект</a>
+        <div class="project-card-btn" style="background: var(--sand-accent); border-style: dashed; justify-content: center; align-items: center; text-align: center; padding: 35px 25px;">
+          <div style="font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--olive-light); margin-bottom: 10px;">DG</div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.45rem; color: var(--text-dark); margin-bottom: 8px;">Проект в реализации</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px; max-width: 320px;">Видовая квартира в Санкт-Петербурге. Ведутся отделочные работы и заказ мебели.</p>
+          <a href="#contacts" class="btn btn-outline" style="border-color: var(--olive-deep); color: var(--olive-deep); width: 100%;">Обсудить ваш проект</a>
         </div>
 
       </div>
     </section>
 
-    <!-- ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР СТОИМОСТИ -->
-    <section id="calc" class="reveal-on-scroll">
+    <!-- КАЛЬКУЛЯТОР СТОИМОСТИ -->
+    <section id="calc">
       <div class="section-header">
-        <span class="section-subtitle">Калькулятор проекта</span>
+        <span class="section-subtitle">Калькулятор</span>
         <h2 class="section-title">Ориентировочный расчет</h2>
       </div>
 
@@ -1145,7 +1305,7 @@
             
             <div class="calc-control-group">
               <div class="calc-label">
-                <span>Площадь вашего объекта</span>
+                <span>Площадь объекта</span>
                 <strong id="area-val" style="color: var(--terracotta); font-size: 1.1rem;">65 м²</strong>
               </div>
               <input type="range" class="range-slider" id="area-range" min="30" max="250" value="65" oninput="calculateProject()">
@@ -1176,16 +1336,41 @@
           <div class="calc-summary-card">
             <h4>Ориентировочная стоимость</h4>
             <div class="calc-price" id="total-price">292 500 ₽</div>
-            <div class="calc-term" id="project-term">Срок выполнения: ~6-8 недель</div>
-            <a href="#contacts" class="btn btn-primary" style="width: 100%; background: var(--terracotta);">Зафиксировать расчет</a>
+            <div class="calc-term" id="project-term">Срок: ~6-8 недель</div>
+            <a href="#contacts" class="btn btn-primary" style="width: 100%;">Зафиксировать расчет</a>
           </div>
 
         </div>
       </div>
     </section>
 
+    <!-- О ДИЗАЙНЕРЕ -->
+    <section id="about">
+      <div class="section-header">
+        <span class="section-subtitle">Об авторе</span>
+        <h2 class="section-title">Принципы работы Дарьи Горелик</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-card-number">01</div>
+          <h3>Сложные цветовые палитры</h3>
+          <p>Сочетание глубоких природных тонов (терракота, изумруд, оливковый, охра) создает ощущение уюта и благородства.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-number">02</div>
+          <h3>Эргономика и скрытые системы</h3>
+          <p>Двери скрытого монтажа, встроенные системы хранения и функциональные гардеробные сохраняют чистоту линий.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-number">03</div>
+          <h3>Многоуровневый свет</h3>
+          <p>От акцентных подвесов до скрытых LED-подсветок и настенных бра для разнообразных сценариев освещения.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- FAQ -->
-    <section id="faq" class="reveal-on-scroll">
+    <section id="faq">
       <div class="section-header">
         <span class="section-subtitle">Ответы на вопросы</span>
         <h2 class="section-title">Часто задаваемые вопросы</h2>
@@ -1195,31 +1380,31 @@
         
         <div class="faq-item" onclick="toggleFaq(this)">
           <div class="faq-question">
-            <span>Сколько времени занимает создание дизайн-проекта?</span>
+            <span>Сколько времени занимает создание проекта?</span>
             <span class="faq-icon">+</span>
           </div>
           <div class="faq-answer">
-            В среднем разработка полного дизайн-проекта квартиры 60–90 м² занимает от 5 до 8 недель. Срок зависит от скорости согласования планировок и визуализаций.
+            В среднем разработка полного дизайн-проекта квартиры 60–90 м² занимает от 5 до 8 недель. Срок зависит от скорости согласования планировок.
           </div>
         </div>
 
         <div class="faq-item" onclick="toggleFaq(this)">
           <div class="faq-question">
-            <span>Работаете ли вы с объектами в других городах?</span>
+            <span>Работаете ли вы с другими городами?</span>
             <span class="faq-icon">+</span>
           </div>
           <div class="faq-answer">
-            Да! Я веду онлайн-проектирование по всей России. Мы проводим встречи в Zoom/Telegram, обмеры делаются по точной инструкции, а ведомости материалов подбираются под магазины и поставщиков вашего региона.
+            Да, я веду онлайн-проектирование по всей России. Мы проводим встречи в Telegram/Zoom, а материалы подбираются под магазины вашего региона.
           </div>
         </div>
 
         <div class="faq-item" onclick="toggleFaq(this)">
           <div class="faq-question">
-            <span>Помогаете ли вы с закупками и своими строителями?</span>
+            <span>Помогаете ли вы с закупками материалов?</span>
             <span class="faq-icon">+</span>
           </div>
           <div class="faq-answer">
-            Да, в рамках тарифа с авторским надзором я беру на себя контроль соответствия стройки чертежам, согласование образцов выкрасов и заказ отделочных материалов со скидками студии.
+            Да, в рамках авторского сопровождения я беру на себя контроль поставок, согласование образцов выкрасов и предоставление партнерских скидок.
           </div>
         </div>
 
@@ -1227,11 +1412,11 @@
     </section>
 
     <!-- ФОРМА КОНТАКТОВ -->
-    <section id="contacts" class="reveal-on-scroll">
+    <section id="contacts">
       <div class="contact-wrapper">
         <div class="contact-info">
           <h3>Создадим интерьер вашей мечты?</h3>
-          <p>Оставьте заявку на разработку индивидуального дизайн-проекта. Дарья лично свяжется с вами, чтобы обсудить задачу, сроки и подготовить коммерческое предложение.</p>
+          <p>Оставьте заявку на дизайн-проект. Дарья лично свяжется с вами, чтобы обсудить задачу, сроки и подготовить индивидуальное предложение.</p>
           
           <div class="contact-details">
             <a href="tel:+79627268847" class="contact-item">
@@ -1240,170 +1425,170 @@
             </a>
             <div class="contact-item">
               <div class="contact-item-dot"></div>
-              <span>Санкт-Петербург, Кронштадт & Онлайн по всей России</span>
+              <span>Санкт-Петербург, Кронштадт & Онлайн по РФ</span>
             </div>
           </div>
 
           <div class="social-links-grid">
-            <a href="https://t.me/+79627268847" target="_blank" class="social-tag hover-trigger" data-hover-label="TG">Telegram</a>
-            <a href="https://wa.me/79627268847" target="_blank" class="social-tag hover-trigger" data-hover-label="WA">WhatsApp</a>
-            <a href="https://vk.ru/gorelikdashaa" target="_blank" class="social-tag hover-trigger" data-hover-label="VK">VKontakte</a>
-            <a href="https://www.instagram.com/gorelikdasha" target="_blank" class="social-tag hover-trigger" data-hover-label="INST">Instagram</a>
+            <a href="https://t.me/+79627268847" target="_blank" class="social-tag">Telegram</a>
+            <a href="https://wa.me/79627268847" target="_blank" class="social-tag">WhatsApp</a>
+            <a href="https://vk.ru/gorelikdashaa" target="_blank" class="social-tag">VKontakte</a>
+            <a href="https://www.instagram.com/gorelikdasha" target="_blank" class="social-tag">Instagram</a>
           </div>
         </div>
 
-        <form class="contact-form" onsubmit="event.preventDefault(); alert('Спасибо за заявку! Дарья свяжется с вами по указанному телефону/мессенджеру.');">
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Спасибо за заявку! Дарья свяжется с вами в течение дня.');">
           <div class="form-group">
             <label>Ваше имя</label>
             <input type="text" class="form-input" placeholder="Как к вам обращаться?" required>
           </div>
           <div class="form-group">
             <label>Телефон / Мессенджер</label>
-            <input type="text" class="form-input" placeholder="+7 (962) 726-88-47" required>
+            <input type="text" class="form-input" placeholder="+7 (___) ___-__-__" required>
           </div>
           <div class="form-group">
-            <label>Параметры вашего объекта</label>
+            <label>Параметры объекта</label>
             <input type="text" class="form-input" placeholder="Например: Квартира 65 м² / Новостройка">
           </div>
           <div class="form-group">
-            <label>Пожелания к проекту</label>
-            <textarea class="form-textarea" rows="3" placeholder="Сроки реализации, предпочтения по стилю"></textarea>
+            <label>Пожелания</label>
+            <textarea class="form-textarea" rows="3" placeholder="Сроки, предпочтения по стилю"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Получить консультацию</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 5px;">Получить консультацию</button>
         </form>
       </div>
     </section>
 
     <!-- Подвал -->
     <footer>
-      <div>© 2026 Студия дизайна интерьера Дарьи Горелик. Все права защищены.</div>
+      <div>© 2026 Студия дизайна интерьера Дарьи Горелик.</div>
       <div>DG | Daria Gorelik Interior Architecture</div>
     </footer>
 
   </div>
 
-  <!-- МОДАЛЬНОЕ ОКНО ПРОЕКТА КРОНШТАДТ (ВСЕ РАКУРСЫ) -->
+  <!-- МОДАЛЬНОЕ ОКНО ПРОЕКТА КРОНШТАДТ -->
   <div id="modal-kronstadt" class="project-modal" onclick="closeOnOutside(event, this)">
     <div class="modal-dialog">
       <div class="modal-header-banner">
         <button class="btn-close-modal" onclick="closeProjectModal('modal-kronstadt')">✕</button>
-        <span style="font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.85;">Полный кейс проекта</span>
+        <span style="font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.85;">Полный кейс</span>
         <h2 class="modal-title">Апартаменты в Кронштадте</h2>
-        <p class="modal-subtitle">Все помещения проекта: зона кухни-гостиной в терракотово-винных тонах с витражным светом, спальня в хвойных оттенках с парящей консолью и вместительная гардеробная комната.</p>
+        <p class="modal-subtitle">Кухня-гостиная в терракотовых тонах с витражным светом, спальня в хвойных оттенках с парящей консолью и отдельная гардеробная.</p>
       </div>
 
       <div class="modal-body">
         <div class="modal-gallery-grid">
           
-          <div class="modal-photo-card full-width hover-trigger" data-hover-label="ZOOM" onclick="openLightbox(this)">
-            <img src="4.jpg" alt="Гостиная: диван и ботаническое панно" data-name="4.jpg">
+          <div class="modal-photo-card full-width" onclick="openLightbox(this)">
+            <img src="4.jpg" alt="Гостиная" data-name="4.jpg" onerror="this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800'">
             <div class="modal-photo-info">
-              <span class="modal-photo-title">Гостиная: флористическое панно и терракотовая палитра</span>
+              <span class="modal-photo-title">Гостиная: флористическое панно</span>
               <span class="modal-photo-zone">Гостиная</span>
             </div>
           </div>
 
-          <div class="modal-photo-card hover-trigger" data-hover-label="ZOOM" onclick="openLightbox(this)">
-            <img src="7.jpg" alt="Столовая зона у окна" data-name="7.jpg">
+          <div class="modal-photo-card" onclick="openLightbox(this)">
+            <img src="7.jpg" alt="Столовая" data-name="7.jpg">
             <div class="modal-photo-info">
-              <span class="modal-photo-title">Обеденная зона и витражный подвесной светильник</span>
+              <span class="modal-photo-title">Обеденная зона и витраж</span>
               <span class="modal-photo-zone">Столовая</span>
             </div>
           </div>
 
-          <div class="modal-photo-card hover-trigger" data-hover-label="ZOOM" onclick="openLightbox(this)">
-            <img src="8.jpg" alt="Зона отдыха с диваном" data-name="8.jpg">
+          <div class="modal-photo-card" onclick="openLightbox(this)">
+            <img src="8.jpg" alt="Диван" data-name="8.jpg">
             <div class="modal-photo-info">
-              <span class="modal-photo-title">Уютный диван и ковер с традиционным орнаментом</span>
+              <span class="modal-photo-title">Терракотовый диван и ковер</span>
               <span class="modal-photo-zone">Гостиная</span>
             </div>
           </div>
 
-          <div class="modal-photo-card full-width hover-trigger" data-hover-label="ZOOM" onclick="openLightbox(this)">
-            <img src="6.jpg" alt="Кухонный гарнитур с рифлеными антресолями" data-name="6.jpg">
+          <div class="modal-photo-card full-width" onclick="openLightbox(this)">
+            <img src="6.jpg" alt="Кухня" data-name="6.jpg">
             <div class="modal-photo-info">
-              <span class="modal-photo-title">Кухня: фасады из шпона ореха и рифленое стекло с подсветкой</span>
+              <span class="modal-photo-title">Кухня: орех и рифленое стекло</span>
               <span class="modal-photo-zone">Кухня</span>
             </div>
           </div>
 
-          <div class="modal-photo-card full-width hover-trigger" data-hover-label="ZOOM" onclick="openLightbox(this)">
-            <img src="кровать%201.jpg" alt="Спальня: кровать и хрустальная люстра" data-name="кровать 1.jpg">
+          <div class="modal-photo-card full-width" onclick="openLightbox(this)">
+            <img src="кровать%201.jpg" alt="Спальня" data-name="кровать 1.jpg">
             <div class="modal-photo-info">
-              <span class="modal-photo-title">Спальня: акцентная изумрудная гамма и хрустальная люстра</span>
+              <span class="modal-photo-title">Спальня: изумруд и хрусталь</span>
               <span class="modal-photo-zone">Спальня</span>
             </div>
           </div>
 
-          <div class="modal-photo-card hover-trigger" data-hover-label="ZOOM" onclick="openLightbox(this)">
-            <img src="тв.jpg" alt="Медиазона с рейками" data-name="тв.jpg">
+          <div class="modal-photo-card" onclick="openLightbox(this)">
+            <img src="тв.jpg" alt="ТВ зона" data-name="тв.jpg">
             <div class="modal-photo-info">
-              <span class="modal-photo-title">ТВ-зона с гипсовыми рейками и встроенной световой линией</span>
+              <span class="modal-photo-title">Медиазона с подсветкой</span>
               <span class="modal-photo-zone">Спальня</span>
             </div>
           </div>
 
-          <div class="modal-photo-card hover-trigger" data-hover-label="ZOOM" onclick="openLightbox(this)">
-            <img src="стена%201.jpg" alt="Стена со скрытой дверью" data-name="стена 1.jpg">
+          <div class="modal-photo-card" onclick="openLightbox(this)">
+            <img src="стена%201.jpg" alt="Скрытая дверь" data-name="стена 1.jpg">
             <div class="modal-photo-info">
-              <span class="modal-photo-title">Дверь скрытого монтажа, ведущая в гардеробную</span>
+              <span class="modal-photo-title">Скрытая дверь в гардеробную</span>
               <span class="modal-photo-zone">Спальня</span>
             </div>
           </div>
 
-          <div class="modal-photo-card hover-trigger" data-hover-label="ZOOM" onclick="openLightbox(this)">
-            <img src="тумба%201.jpg" alt="Прикроватная тумба" data-name="тумба 1.jpg">
+          <div class="modal-photo-card" onclick="openLightbox(this)">
+            <img src="тумба%201.jpg" alt="Тумба" data-name="тумба 1.jpg">
             <div class="modal-photo-info">
-              <span class="modal-photo-title">Прикроватная тумба и отделка шпоном ореха</span>
+              <span class="modal-photo-title">Прикроватная зона и шпон</span>
               <span class="modal-photo-zone">Детали</span>
             </div>
           </div>
 
-          <div class="modal-photo-card hover-trigger" data-hover-label="ZOOM" onclick="openLightbox(this)">
-            <img src="консоль%201.jpg" alt="Консоль с полукруглым зеркалом" data-name="консоль 1.jpg">
+          <div class="modal-photo-card" onclick="openLightbox(this)">
+            <img src="консоль%201.jpg" alt="Консоль" data-name="консоль 1.jpg">
             <div class="modal-photo-info">
-              <span class="modal-photo-title">Туалетный столик с парящим зеркалом и подсветкой</span>
+              <span class="modal-photo-title">Туалетный столик с зеркалом</span>
               <span class="modal-photo-zone">Консоль</span>
             </div>
           </div>
 
-          <div class="modal-photo-card hover-trigger" data-hover-label="ZOOM" onclick="openLightbox(this)">
-            <img src="консоль%20близко%201.jpg" alt="Макияжная зона вблизи" data-name="консоль близко 1.jpg">
+          <div class="modal-photo-card" onclick="openLightbox(this)">
+            <img src="консоль%20близко%201.jpg" alt="Консоль близко" data-name="консоль близко 1.jpg">
             <div class="modal-photo-info">
-              <span class="modal-photo-title">Текстуры лесных обоев и дизайнерский подвес</span>
+              <span class="modal-photo-title">Текстуры обоев и бра</span>
               <span class="modal-photo-zone">Консоль</span>
             </div>
           </div>
 
-          <div class="modal-photo-card hover-trigger" data-hover-label="ZOOM" onclick="openLightbox(this)">
-            <img src="консоль.jpg" alt="Консоль и подвесные светильники" data-name="консоль.jpg">
+          <div class="modal-photo-card" onclick="openLightbox(this)">
+            <img src="консоль.jpg" alt="Свет над консолью" data-name="консоль.jpg">
             <div class="modal-photo-info">
-              <span class="modal-photo-title">Фактурное настенное бра и стеклянные подвесы</span>
+              <span class="modal-photo-title">Стеклянные подвесы</span>
               <span class="modal-photo-zone">Свет</span>
             </div>
           </div>
 
-          <div class="modal-photo-card hover-trigger" data-hover-label="ZOOM" onclick="openLightbox(this)">
-            <img src="гардероб%202.jpg" alt="Гардеробная перспектива" data-name="гардероб 2.jpg">
+          <div class="modal-photo-card" onclick="openLightbox(this)">
+            <img src="гардероб%202.jpg" alt="Гардероб" data-name="гардероб 2.jpg">
             <div class="modal-photo-info">
-              <span class="modal-photo-title">Продольная перспектива гардеробной комнаты</span>
-              <span class="modal-photo-zone">Гардеробная</span>
+              <span class="modal-photo-title">Перспектива гардеробной</span>
+              <span class="modal-photo-zone">Гардероб</span>
             </div>
           </div>
 
-          <div class="modal-photo-card hover-trigger" data-hover-label="ZOOM" onclick="openLightbox(this)">
-            <img src="гардероб%203.jpg" alt="Модули для хранения" data-name="гардероб 3.jpg">
+          <div class="modal-photo-card" onclick="openLightbox(this)">
+            <img src="гардероб%203.jpg" alt="Стеллажи" data-name="гардероб 3.jpg">
             <div class="modal-photo-info">
-              <span class="modal-photo-title">Стеллажные секции для аксессуаров и обуви</span>
-              <span class="modal-photo-zone">Гардеробная</span>
+              <span class="modal-photo-title">Стеллажи для аксессуаров</span>
+              <span class="modal-photo-zone">Гардероб</span>
             </div>
           </div>
 
-          <div class="modal-photo-card full-width hover-trigger" data-hover-label="ZOOM" onclick="openLightbox(this)">
-            <img src="гардероб%204.jpg" alt="Открытая гардеробная система" data-name="гардероб 4.jpg">
+          <div class="modal-photo-card full-width" onclick="openLightbox(this)">
+            <img src="гардероб%204.jpg" alt="Открытая система" data-name="гардероб 4.jpg">
             <div class="modal-photo-info">
-              <span class="modal-photo-title">Система вешал со встроенным направленным светом</span>
-              <span class="modal-photo-zone">Гардеробная</span>
+              <span class="modal-photo-title">Система вешал со светом</span>
+              <span class="modal-photo-zone">Гардероб</span>
             </div>
           </div>
 
@@ -1418,7 +1603,16 @@
   </div>
 
   <script>
-    // 1. Прогресс скролла
+    // 1. Мобильное меню
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('burger-toggle');
+      menu.classList.toggle('open');
+      btn.classList.toggle('open');
+      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : 'auto';
+    }
+
+    // 2. Прогресс скролла
     window.addEventListener('scroll', () => {
       const winScroll = document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -1426,55 +1620,30 @@
       document.getElementById('scroll-progress').style.width = scrolled + '%';
     });
 
-    // 2. Custom Magnetic Cursor
-    const cursor = document.getElementById('cursor');
-    const follower = document.getElementById('cursor-follower');
+    // 3. Кастомный курсор (только десктоп)
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      const cursor = document.getElementById('cursor');
+      const follower = document.getElementById('cursor-follower');
 
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-      follower.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-    });
-
-    document.querySelectorAll('.hover-trigger').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        document.body.classList.add('hover-view');
-        const label = el.getAttribute('data-hover-label') || 'VIEW';
-        follower.innerText = label;
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+        follower.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
       });
-      el.addEventListener('mouseleave', () => {
-        document.body.classList.remove('hover-view');
-        follower.innerText = '';
-      });
-    });
 
-    // 3. 3D Tilt Effect on Cards
-    const tiltCards = document.querySelectorAll('.tilt-card');
-    tiltCards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        card.style.transform = `rotateY(${x / 25}deg) rotateX(${-y / 25}deg) translateY(-6px)`;
+      document.querySelectorAll('.hover-trigger').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          document.body.classList.add('hover-view');
+          const label = el.getAttribute('data-hover-label') || 'VIEW';
+          follower.innerText = label;
+        });
+        el.addEventListener('mouseleave', () => {
+          document.body.classList.remove('hover-view');
+          follower.innerText = '';
+        });
       });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = `rotateY(0deg) rotateX(0deg) translateY(0)`;
-      });
-    });
+    }
 
-    // 4. Scroll Reveal Observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.reveal-on-scroll').forEach(section => {
-      observer.observe(section);
-    });
-
-    // 5. Калькулятор стоимости
+    // 4. Калькулятор
     let currentRate = 4500;
     let currentTerm = '6-8 недель';
 
@@ -1491,10 +1660,10 @@
       document.getElementById('area-val').innerText = area + ' м²';
       const total = area * currentRate;
       document.getElementById('total-price').innerText = total.toLocaleString('ru-RU') + ' ₽';
-      document.getElementById('project-term').innerText = 'Срок выполнения: ~' + currentTerm;
+      document.getElementById('project-term').innerText = 'Срок: ~' + currentTerm;
     }
 
-    // 6. Аккордеон FAQ
+    // 5. FAQ
     function toggleFaq(element) {
       const isActive = element.classList.contains('active');
       document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
@@ -1503,7 +1672,7 @@
       }
     }
 
-    // 7. Модальное окно и Лайтбокс
+    // 6. Модальное окно и Лайтбокс
     function openProjectModal(modalId) {
       const modal = document.getElementById(modalId);
       if (modal) {
