@@ -469,7 +469,7 @@
     /* ПРОЕКТЫ */
     .projects-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
     }
 
@@ -545,14 +545,14 @@
 
     .project-card-title {
       font-family: 'Playfair Display', serif;
-      font-size: 1.45rem;
+      font-size: 1.5rem;
       color: var(--text-dark);
       margin-bottom: 10px;
       line-height: 1.25;
     }
 
     .project-card-desc {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
       line-height: 1.55;
       margin-bottom: 18px;
@@ -1076,41 +1076,46 @@
 
     .social-links-grid {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
     .social-tag {
       background: #FFF;
       border: 1.5px solid var(--border-color);
-      padding: 8px 16px;
+      padding: 9px 18px;
       border-radius: 25px;
       text-decoration: none;
       color: var(--text-dark);
-      font-size: 0.84rem;
+      font-size: 0.85rem;
       font-weight: 600;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       transition: all 0.25s ease;
     }
 
-    .social-tag svg {
-      width: 17px;
-      height: 17px;
+    .social-icon-box {
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
-      transition: transform 0.2s ease;
+    }
+
+    .social-icon-box svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      fill: currentColor;
     }
 
     .social-tag:hover {
       border-color: var(--olive-main);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(62, 75, 49, 0.12);
+      box-shadow: 0 5px 14px rgba(62, 75, 49, 0.12);
       color: var(--terracotta);
-    }
-
-    .social-tag:hover svg {
-      transform: scale(1.1);
     }
 
     .contact-form {
@@ -1168,7 +1173,7 @@
       gap: 8px;
     }
 
-    /* МОДАЛЬНЫЕ ОКНА ГАЛЕРЕЙ */
+    /* МОДАЛЬНОЕ ОКНО ГАЛЕРЕИ */
     .project-modal {
       display: none;
       position: fixed;
@@ -1489,7 +1494,7 @@
       </div>
     </section>
 
-    <!-- ПРОЕКТЫ В ПОРТФОЛИО -->
+    <!-- ПОРТФОЛИО (ИСХОДНЫЙ ВИД) -->
     <section id="projects">
       <div class="section-header">
         <span class="section-subtitle">Портфолио</span>
@@ -1498,7 +1503,7 @@
 
       <div class="projects-container">
         
-        <!-- КЕЙС 1: Кронштадт -->
+        <!-- КЕЙС: Кронштадт -->
         <div class="project-card-btn hover-trigger" data-hover-label="OPEN" onclick="openProjectModal('modal-kronstadt')">
           <div class="project-preview-wrap">
             <img class="project-preview-img" src="4.jpg" alt="Апартаменты в Кронштадте" onerror="this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800'">
@@ -1537,43 +1542,12 @@
           </div>
         </div>
 
-        <!-- КЕЙС 2: Новая визуализация / Проект в Санкт-Петербурге -->
-        <div class="project-card-btn hover-trigger" data-hover-label="OPEN" onclick="openProjectModal('modal-spb')">
-          <div class="project-preview-wrap">
-            <img class="project-preview-img" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80" alt="Видовая квартира в Санкт-Петербурге">
-            <div class="project-count-badge">Концепт • 6 зон</div>
-          </div>
-          <div class="project-card-content">
-            <div>
-              <span class="project-tag">ЖК Бизнес-класса • Санкт-Петербург</span>
-              <h3 class="project-card-title">Видовая квартира на Петроградской</h3>
-              <p class="project-card-desc">Минималистичный интерьер в теплых песочных и графитовых оттенках со скрытыми системами хранения, островом из кварцита и панорамным светом.</p>
-              
-              <div class="project-meta-grid">
-                <div class="meta-item">
-                  <span>Локация</span>
-                  <strong>Санкт-Петербург</strong>
-                </div>
-                <div class="meta-item">
-                  <span>Стиль</span>
-                  <strong>Warm Minimalism</strong>
-                </div>
-                <div class="meta-item">
-                  <span>Площадь</span>
-                  <strong>84 м²</strong>
-                </div>
-                <div class="meta-item">
-                  <span>Статус</span>
-                  <strong>Рабочие чертежи</strong>
-                </div>
-              </div>
-            </div>
-
-            <div class="project-btn-cta">
-              <span>Смотреть визуализации</span>
-              <span>→</span>
-            </div>
-          </div>
+        <!-- КАРТОЧКА: Проект в реализации -->
+        <div class="project-card-btn" style="background: var(--sand-accent); border-style: dashed; justify-content: center; align-items: center; text-align: center; padding: 35px 25px;">
+          <div style="font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--olive-light); margin-bottom: 10px;">DG</div>
+          <h3 style="font-family: 'Playfair Display', serif; font-size: 1.45rem; color: var(--text-dark); margin-bottom: 8px;">Проект в реализации</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px; max-width: 320px;">Видовая квартира в Санкт-Петербурге. Ведутся отделочные работы и заказ мебели.</p>
+          <a href="#contacts" class="btn btn-outline" style="border-color: var(--olive-deep); color: var(--olive-deep); width: 100%;">Обсудить ваш проект</a>
         </div>
 
       </div>
@@ -1619,7 +1593,7 @@
                 </div>
               </div>
 
-              <!-- Динамический блок состава выбранного тарифа -->
+              <!-- Блок состава выбранного тарифа -->
               <div class="tariff-scope-box" id="tariff-scope-display">
                 <div class="tariff-scope-title" id="scope-title">В тариф «Полный проект» входит:</div>
                 <ul class="tariff-scope-list" id="scope-items">
@@ -1729,7 +1703,7 @@
       </div>
     </section>
 
-    <!-- КОНТАКТЫ С ИКОНКАМИ И VK -->
+    <!-- КОНТАКТЫ С ЧЕТКИМИ ИКОНКАМИ И "VK" -->
     <section id="contacts">
       <div class="contact-wrapper">
         <div class="contact-info">
@@ -1751,33 +1725,41 @@
             
             <!-- Telegram -->
             <a href="https://t.me/+79627268847" target="_blank" class="social-tag">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
-              </svg>
+              <span class="social-icon-box">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                </svg>
+              </span>
               <span>Telegram</span>
             </a>
 
-            <!-- WhatsApp -->
+            <!-- WhatsApp (Четкий официальный контур) -->
             <a href="https://wa.me/79627268847" target="_blank" class="social-tag">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0012.04 2zm5.79 14.07c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.16.12-3.37-.8-2.63-1.09-4.32-3.76-4.45-3.93-.13-.18-1.06-1.41-1.06-2.69s.67-1.9 1-2.16c.27-.27.59-.34.79-.34.2 0 .4 0 .57.01.19.01.44-.07.69.53.25.6.86 2.1.94 2.25.08.16.13.34.03.55-.1.21-.16.34-.31.52-.16.18-.33.4-.47.54-.16.16-.33.33-.14.65.19.32.84 1.38 1.8 2.24 1.24 1.1 2.28 1.45 2.6 1.61.32.16.51.13.7-.08.19-.22.81-.94 1.03-1.27.22-.32.43-.27.73-.16.3.11 1.9 0.9 2.22 1.06.32.16.54.24.62.38.08.13.08.77-.16 1.44z"/>
-              </svg>
+              <span class="social-icon-box">
+                <svg viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.301-.15-1.782-.879-2.058-.979-.276-.1-.476-.15-.676.15-.2.3-.776.979-.951 1.179-.175.2-.351.225-.652.075-.301-.15-1.27-.468-2.42-1.493-.895-.798-1.5-1.783-1.675-2.083-.175-.3-.019-.462.131-.611.136-.134.301-.35.451-.525.15-.175.2-.3.301-.5.1-.2.05-.375-.025-.525-.075-.15-.676-1.631-.926-2.232-.244-.585-.493-.506-.677-.515-.175-.008-.375-.01-.576-.01-.2 0-.525.075-.801.375-.276.3-1.052 1.029-1.052 2.509s1.077 2.909 1.227 3.109c.15.2 2.12 3.237 5.136 4.54.717.31 1.277.496 1.713.635.72.229 1.375.197 1.893.12.577-.087 1.782-.729 2.032-1.433.25-.704.25-1.307.175-1.433-.075-.126-.275-.201-.576-.351zM12.05 2C6.54 2 2.06 6.48 2.06 12c0 1.98.58 3.82 1.58 5.37L2.5 22l4.78-1.12c1.47.88 3.18 1.38 4.77 1.38 5.51 0 10-4.48 10-10S17.56 2 12.05 2zm0 18.25c-1.46 0-2.89-.41-4.13-1.18l-.3-.18-2.82.66.75-2.73-.2-.31c-.85-1.32-1.3-2.86-1.3-4.51 0-4.55 3.7-8.25 8-8.25s8 3.7 8 8.25-3.59 8.25-8 8.25z"/>
+                </svg>
+              </span>
               <span>WhatsApp</span>
             </a>
 
-            <!-- VK -->
+            <!-- VK (Четкий официальный контур) -->
             <a href="https://vk.ru/gorelikdashaa" target="_blank" class="social-tag">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M13.162 18.994c.609 0 .858-.406.851-.915-.072-2.12.954-2.898 2.012-2.072 1.058.826 1.47 1.85 2.684 2.809.918.725 1.62.566 1.62.566l2.673-.037s1.398-.086.735-1.182c-.054-.09-.39-.822-2.008-2.327-1.693-1.574-1.466-1.319.574-4.039 1.242-1.657 1.738-2.668 1.583-3.1-.148-.411-1.06-.302-1.06-.302l-3.013.019c-.278.016-.484.14-.587.397-.406 1.01-1.637 3.32-2.316 3.974-.338.326-.492.428-.674.428-.182 0-.267-.102-.267-.655V9.418c0-.627-.182-.907-.706-.907h-2.368c-.394 0-.636.208-.636.406 0 .394.59.485.65.1.59.08 1.135.539 1.135 1.758v3.422c0 .75-.136.886-.431.886-.786 0-2.698-2.73-3.83-5.856-.222-.612-.437-.866-1.053-.866H2.605c-.394 0-.546.182-.546.386 0 .362.463 2.164 2.156 4.54 2.257 3.167 5.433 4.887 8.32 4.887l.627-.014z"/>
-              </svg>
+              <span class="social-icon-box">
+                <svg viewBox="0 0 24 24">
+                  <path d="M15.684 0H8.316C2.992 0 0 2.992 0 8.316v7.368C0 21.008 2.992 24 8.316 24h7.368C21.008 24 24 21.008 24 15.684V8.316C24 2.992 21.008 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.053-1.716-1.037-1.01-1.498-1.144-1.756-1.144-.359 0-.462.103-.462.6v1.658c0 .42-.134.602-1.25.602-1.849 0-3.904-1.12-5.348-3.21-2.174-3.09-2.772-5.42-2.772-5.898 0-.263.103-.507.602-.507h1.745c.447 0 .614.205.787.69.852 2.477 2.277 4.65 2.866 4.65.221 0 .324-.102.324-.662V10.74c-.068-1.189-.693-1.29-.693-1.712 0-.203.17-.406.444-.406h2.744c.371 0 .502.194.502.628v3.376c0 .367.163.502.271.502.222 0 .408-.135.819-.545 1.272-1.42 2.18-3.528 2.18-3.528.12-.26.337-.435.78-.435h1.744c.523 0 .633.268.52.646-.22 1.025-2.38 4.093-2.484 4.267-.247.375-.34.545 0 .997.247.33 1.059 1.037 1.603 1.667.994 1.139 1.764 2.093 1.968 2.753.211.666-.118.898-.597.898z"/>
+                </svg>
+              </span>
               <span>VK</span>
             </a>
 
             <!-- Instagram -->
             <a href="https://www.instagram.com/gorelikdasha" target="_blank" class="social-tag">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
+              <span class="social-icon-box">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </span>
               <span>Instagram</span>
             </a>
 
@@ -1869,7 +1851,7 @@
     </div>
   </div>
 
-  <!-- МОДАЛЬНОЕ ОКНО 1: Кронштадт -->
+  <!-- МОДАЛЬНОЕ ОКНО ГАЛЕРЕИ (КРОНШТАДТ) -->
   <div id="modal-kronstadt" class="project-modal" onclick="closeOnOutside(event, this)">
     <div class="modal-dialog">
       <div class="modal-header-banner">
@@ -1991,72 +1973,6 @@
             <div class="modal-photo-info">
               <span class="modal-photo-title">Система вешал со встроенным светом</span>
               <span class="modal-photo-zone">Гардероб</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- МОДАЛЬНОЕ ОКНО 2: Санкт-Петербург -->
-  <div id="modal-spb" class="project-modal" onclick="closeOnOutside(event, this)">
-    <div class="modal-dialog">
-      <div class="modal-header-banner">
-        <button class="btn-close-modal" onclick="closeProjectModal('modal-spb')">✕</button>
-        <span style="font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.85;">Архитектурный концепт</span>
-        <h2 class="modal-title">Видовая квартира на Петроградской</h2>
-        <p class="modal-subtitle">Концепция теплого минимализма: натуральный травертин, скрытая кухня без ручек, остров из кварцита и мягкий рассеянный свет.</p>
-      </div>
-
-      <div class="modal-body">
-        <div class="modal-gallery-grid">
-          
-          <div class="modal-photo-card full-width" onclick="openLightbox(this)">
-            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80" alt="Гостиная открытой планировки" loading="lazy" decoding="async">
-            <div class="modal-photo-info">
-              <span class="modal-photo-title">Гостиная: диванная группа и биокамин</span>
-              <span class="modal-photo-zone">Гостиная</span>
-            </div>
-          </div>
-
-          <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Кухонный остров" loading="lazy" decoding="async">
-            <div class="modal-photo-info">
-              <span class="modal-photo-title">Кухонный остров из кварцита</span>
-              <span class="modal-photo-zone">Кухня</span>
-            </div>
-          </div>
-
-          <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80" alt="Обеденная зона" loading="lazy" decoding="async">
-            <div class="modal-photo-info">
-              <span class="modal-photo-title">Обеденная зона с мягкими креслами</span>
-              <span class="modal-photo-zone">Столовая</span>
-            </div>
-          </div>
-
-          <div class="modal-photo-card full-width" onclick="openLightbox(this)">
-            <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1200&q=80" alt="Мастер-спальня" loading="lazy" decoding="async">
-            <div class="modal-photo-info">
-              <span class="modal-photo-title">Мастер-спальня с мягким изголовьем</span>
-              <span class="modal-photo-zone">Спальня</span>
-            </div>
-          </div>
-
-          <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" alt="Ванная комната" loading="lazy" decoding="async">
-            <div class="modal-photo-info">
-              <span class="modal-photo-title">Санузел: крупноформатный керамогранит</span>
-              <span class="modal-photo-zone">Ванная</span>
-            </div>
-          </div>
-
-          <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80" alt="Сценарии освещения" loading="lazy" decoding="async">
-            <div class="modal-photo-info">
-              <span class="modal-photo-title">Скрытая контурная подсветка</span>
-              <span class="modal-photo-zone">Свет</span>
             </div>
           </div>
 
