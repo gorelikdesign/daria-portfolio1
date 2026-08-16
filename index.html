@@ -635,7 +635,6 @@
     }
     .workflow-card:hover::before { opacity: 0.08; transform: scale(1); }
 
-    /* Графика для этапов работы */
     .step-brief::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23A45C49'%3E%3Cpath d='M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z'/%3E%3C/svg%3E"); }
     .step-measure::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233E4B31'%3E%3Cpath d='M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 10H3V8h2v4h2V8h2v4h2V8h2v4h2V8h2v4h2V8h2v8z'/%3E%3C/svg%3E"); }
     .step-plan::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23D4A373'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z'/%3E%3C/svg%3E"); }
@@ -785,7 +784,7 @@
 
     /* МОДАЛЬНЫЕ ОКНА */
     .tariff-modal-overlay, .project-modal { display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(26, 33, 20, 0.92); backdrop-filter: blur(8px); padding: 40px 20px; overflow-y: auto; }
-    .tariff-modal-content, .modal-dialog { background: var(--sand-bg); border-radius: 20px; max-width: 1060px; width: 100%; margin: auto; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.45); border: 1px solid var(--border-color); position: relative; }
+    .tariff-modal-content, .modal-dialog { background: var(--sand-bg); border-radius: 20px; max-width: 1100px; width: 100%; margin: auto; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.45); border: 1px solid var(--border-color); position: relative; }
     .tariff-modal-header, .modal-header-banner { background: var(--olive-deep); color: #FFF; padding: 30px 40px; position: relative; }
     .tariff-modal-header h3, .modal-title { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.5vw, 1.8rem); margin-bottom: 6px; }
     .tariff-modal-body, .modal-body { padding: 35px; }
@@ -805,14 +804,26 @@
     .modal-photo-card { background: var(--sand-card); border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; cursor: pointer; transition: transform 0.2s; }
     .modal-photo-card:hover { transform: translateY(-3px); }
     .modal-photo-card.full-width { grid-column: span 2; }
-    .modal-photo-card img { width: 100%; height: 380px; object-fit: cover; display: block; }
-    .modal-photo-info { padding: 14px 18px; border-top: 1px solid var(--border-color); }
+    .modal-photo-card img { width: 100%; height: 380px; object-fit: cover; display: block; background: #eee; }
+    .modal-photo-card.full-width img { height: 440px; }
+    .modal-photo-info { padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); }
     .modal-photo-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--text-dark); }
+    .modal-photo-zone { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--olive-main); font-weight: 600; }
+
+    .modal-action-footer { margin-top: 35px; padding: 25px 20px; background: var(--sand-accent); border-radius: 14px; border: 1px solid var(--border-color); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .modal-action-footer h4 { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--text-dark); }
+    .modal-action-footer p { font-size: 0.88rem; color: var(--text-muted); max-width: 500px; }
 
     .lightbox { display: none; position: fixed; z-index: 4000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 20, 10, 0.96); backdrop-filter: blur(6px); justify-content: center; align-items: center; cursor: pointer; padding: 15px; }
     .lightbox img { max-width: 95%; max-height: 90vh; border-radius: 8px; object-fit: contain; }
 
     footer { padding: 25px 40px; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--text-muted); flex-wrap: wrap; gap: 10px; }
+
+    @media (max-width: 960px) {
+      .tariff-modal-body, .modal-gallery-grid { grid-template-columns: 1fr; }
+      .modal-photo-card.full-width { grid-column: span 1; }
+      .modal-photo-card.full-width img, .modal-photo-card img { height: 260px; }
+    }
 
     @media (max-width: 900px) {
       body { padding: 10px 6px; }
@@ -821,9 +832,8 @@
       nav.nav-desktop { display: none; }
       .burger-btn { display: flex; }
       .hero { margin: 12px 12px 0 12px; padding: 35px 20px; flex-direction: column-reverse; text-align: center; gap: 25px; }
-      .hero-actions .btn { width: 100%; }
-      .calc-grid, .contact-wrapper, .tariff-modal-body, .modal-gallery-grid { grid-template-columns: 1fr; }
-      .modal-photo-card.full-width { grid-column: span 1; }
+      .calc-grid, .contact-wrapper, .tariff-modal-body { grid-template-columns: 1fr; }
+      footer { padding: 20px 18px; text-align: center; flex-direction: column; gap: 8px; }
     }
   </style>
 </head>
@@ -930,7 +940,7 @@
         <div class="project-card-btn hover-trigger project-item stagger-item" data-category="apartments" data-hover-label="OPEN" onclick="openProjectModal('modal-kronstadt')">
           <div class="project-preview-wrap">
             <img class="project-preview-img" src="4.jpg" alt="Апартаменты в Кронштадте" onerror="this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800'">
-            <div class="project-count-badge">Кейс • 11 ракурсов</div>
+            <div class="project-count-badge">Кейс • 14 ракурсов</div>
           </div>
           <div class="project-card-content">
             <div>
@@ -987,7 +997,7 @@
       </div>
     </section>
 
-    <!-- ЭТАПЫ РАБОТЫ (С ГРАФИКОЙ ПРИ НАВЕДЕНИИ) -->
+    <!-- ЭТАПЫ РАБОТЫ (С ГРАФИЧЕСКИМИ ИКОНКАМИ ПРИ НАВЕДЕНИИ) -->
     <section id="workflow" class="workflow-section reveal">
       <div class="section-header">
         <span class="section-subtitle">Прозрачный процесс</span>
