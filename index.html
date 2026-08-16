@@ -466,6 +466,7 @@
       background: var(--olive-main);
     }
 
+    /* ПРОЕКТЫ */
     .projects-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -605,9 +606,9 @@
 
     .calc-grid {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
+      grid-template-columns: 1.35fr 1fr;
       gap: 40px;
-      align-items: center;
+      align-items: flex-start;
     }
 
     .calc-control-group {
@@ -623,6 +624,26 @@
       margin-bottom: 10px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-info-pop {
+      background: rgba(164, 92, 73, 0.12);
+      border: 1px solid var(--terracotta);
+      color: var(--terracotta-dark);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 14px;
+      cursor: pointer;
+      text-transform: none;
+      letter-spacing: 0;
+      transition: all 0.2s;
+    }
+
+    .btn-info-pop:hover {
+      background: var(--terracotta);
+      color: #FFF;
     }
 
     .range-slider {
@@ -647,6 +668,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
+      margin-bottom: 18px;
     }
 
     .tariff-option {
@@ -657,6 +679,7 @@
       cursor: pointer;
       text-align: center;
       transition: all 0.2s ease;
+      position: relative;
     }
 
     .tariff-option.active {
@@ -677,6 +700,49 @@
     .tariff-option span {
       font-size: 0.72rem;
       color: var(--text-muted);
+    }
+
+    /* БЛОК С ОПИСАНИЕМ СОСТАВА ТАРИФА */
+    .tariff-scope-box {
+      background: var(--sand-accent);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px 20px;
+    }
+
+    .tariff-scope-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      color: var(--olive-deep);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tariff-scope-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .tariff-scope-list li {
+      font-size: 0.86rem;
+      color: var(--text-dark);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.45;
+    }
+
+    .tariff-scope-list li::before {
+      content: '✓';
+      color: var(--terracotta);
+      font-weight: 700;
+      flex-shrink: 0;
     }
 
     .calc-summary-card {
@@ -707,6 +773,126 @@
       font-size: 0.82rem;
       opacity: 0.9;
       margin-bottom: 20px;
+    }
+
+    /* МОДАЛЬНОЕ ОКНО СРАВНЕНИЯ ТАРИФОВ */
+    .tariff-modal-overlay {
+      display: none;
+      position: fixed;
+      z-index: 3000;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(26, 33, 20, 0.94);
+      backdrop-filter: blur(8px);
+      padding: 20px 15px;
+      overflow-y: auto;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tariff-modal-content {
+      background: var(--sand-bg);
+      border-radius: 18px;
+      max-width: 780px;
+      width: 100%;
+      margin: auto;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      border: 1px solid var(--border-color);
+      position: relative;
+    }
+
+    .tariff-modal-header {
+      background: var(--olive-deep);
+      color: #FFF;
+      padding: 25px 30px;
+      position: relative;
+    }
+
+    .tariff-modal-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 4px;
+    }
+
+    .tariff-modal-header p {
+      font-size: 0.85rem;
+      opacity: 0.85;
+    }
+
+    .tariff-modal-body {
+      padding: 25px 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 20px;
+    }
+
+    .tariff-modal-card {
+      background: var(--sand-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .tariff-modal-card.highlight {
+      border-color: var(--terracotta);
+      box-shadow: 0 6px 20px rgba(164, 92, 73, 0.12);
+    }
+
+    .tariff-modal-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .tariff-modal-card .tariff-price-badge {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      margin-bottom: 14px;
+    }
+
+    .tariff-modal-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+    }
+
+    .tariff-modal-card ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      line-height: 1.4;
+    }
+
+    .tariff-modal-card ul li::before {
+      content: '✓';
+      color: var(--olive-main);
+      font-weight: 700;
+    }
+
+    .btn-close-tariff {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: #FFF;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .faq-list {
@@ -961,7 +1147,7 @@
       gap: 8px;
     }
 
-    /* МОДАЛЬНОЕ ОКНО */
+    /* МОДАЛЬНОЕ ОКНО ГАЛЕРЕИ */
     .project-modal {
       display: none;
       position: fixed;
@@ -1229,7 +1415,7 @@
 
   <div class="container">
     
-    <!-- ШАПКА С АРХИТЕКТУРНОЙ МОНОГРАММОЙ DG -->
+    <!-- ШАПКА -->
     <header>
       <a href="#" class="brand-logo">
         <svg class="logo-emblem-svg" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1339,7 +1525,7 @@
       </div>
     </section>
 
-    <!-- КАЛЬКУЛЯТОР -->
+    <!-- КАЛЬКУЛЯТОР С ПОДРОБНЫМ СОСТАВОМ ТАРИФОВ -->
     <section id="calc">
       <div class="section-header">
         <span class="section-subtitle">Калькулятор</span>
@@ -1362,21 +1548,34 @@
             <div class="calc-control-group">
               <div class="calc-label">
                 <span>Формат дизайн-проекта</span>
+                <button type="button" class="btn-info-pop" onclick="openTariffModal()">ⓘ Сравнить все тарифы</button>
               </div>
               <div class="tariff-selector">
-                <div class="tariff-option" onclick="setTariff(800, '3-4 недели', this)">
+                <div class="tariff-option" onclick="setTariff('plan', 800, '3-4 недели', this)">
                   <h5>Планировка</h5>
                   <span>800 ₽/м²</span>
                 </div>
-                <div class="tariff-option active" onclick="setTariff(1500, '6-8 недель', this)">
+                <div class="tariff-option active" onclick="setTariff('full', 1500, '6-8 недель', this)">
                   <h5>Полный проект</h5>
                   <span>1 500 ₽/м²</span>
                 </div>
-                <div class="tariff-option" onclick="setTariff(3000, '8-12 недель', this)">
+                <div class="tariff-option" onclick="setTariff('all', 3000, '8-12 недель', this)">
                   <h5>All Inclusive</h5>
                   <span>3 000 ₽/м²</span>
                 </div>
               </div>
+
+              <!-- Динамический блок состава выбранного тарифа -->
+              <div class="tariff-scope-box" id="tariff-scope-display">
+                <div class="tariff-scope-title" id="scope-title">В тариф «Полный проект» входит:</div>
+                <ul class="tariff-scope-list" id="scope-items">
+                  <li>Выезд замерщика на объект</li>
+                  <li>Полный пакет рабочих чертежей для строителей</li>
+                  <li>3D-визуализации всех помещений</li>
+                  <li>Подбор мебели, чистовых материалов и освещения</li>
+                </ul>
+              </div>
+
             </div>
 
           </div>
@@ -1531,7 +1730,63 @@
 
   </div>
 
-  <!-- МОДАЛЬНОЕ ОКНО С ГАЛЕРЕЕЙ -->
+  <!-- МОДАЛЬНОЕ ОКНО С ПОЛНЫМ СОСТАВОМ ТАРИФОВ (ВСПОМОГАТЕЛЬНОЕ) -->
+  <div id="modal-tariffs" class="tariff-modal-overlay" onclick="closeOnOutside(event, this)">
+    <div class="tariff-modal-content">
+      <div class="tariff-modal-header">
+        <button class="btn-close-tariff" onclick="closeTariffModal()">✕</button>
+        <h3>Что входит в каждый тариф?</h3>
+        <p>Прозрачный состав работ без скрытых платежей и переплат</p>
+      </div>
+      <div class="tariff-modal-body">
+        
+        <div class="tariff-modal-card">
+          <div>
+            <h4>Планировка</h4>
+            <div class="tariff-price-badge">800 ₽/м² • ~3-4 недели</div>
+            <ul>
+              <li><strong>Выезд замерщика</strong> на объект</li>
+              <li><strong>Пакет чертежей</strong> (обмерный план, план демонтажа и монтажа)</li>
+              <li><strong>3 варианта планировочных решений</strong> с расстановкой мебели</li>
+            </ul>
+          </div>
+          <button class="btn btn-outline" style="color: var(--olive-deep); border-color: var(--olive-deep); padding: 8px 12px; font-size: 0.75rem;" onclick="selectTariffFromModal('plan', 800, '3-4 недели')">Выбрать этот тариф</button>
+        </div>
+
+        <div class="tariff-modal-card highlight">
+          <div>
+            <h4>Полный проект</h4>
+            <div class="tariff-price-badge">1 500 ₽/м² • ~6-8 недель</div>
+            <ul>
+              <li><strong>Выезд замерщика</strong> на объект</li>
+              <li><strong>Полный пакет чертежей</strong> для строителей</li>
+              <li><strong>3D-визуализации</strong> всех помещений</li>
+              <li><strong>Подбор мебели, чистовых материалов и освещения</strong></li>
+            </ul>
+          </div>
+          <button class="btn btn-primary" style="padding: 8px 12px; font-size: 0.75rem;" onclick="selectTariffFromModal('full', 1500, '6-8 недель')">Выбрать этот тариф</button>
+        </div>
+
+        <div class="tariff-modal-card">
+          <div>
+            <h4>All Inclusive</h4>
+            <div class="tariff-price-badge">3 000 ₽/м² • ~8-12 недель</div>
+            <ul>
+              <li><strong>Выезд замерщика</strong> на объект</li>
+              <li><strong>Полный пакет чертежей</strong> для строителей</li>
+              <li><strong>3D-визуализации</strong> всех помещений</li>
+              <li><strong>Подбор мебели, чистовых материалов и освещения</strong></li>
+              <li><strong>Авторский надзор</strong> и контроль реализации</li>
+            </ul>
+          </div>
+          <button class="btn btn-outline" style="color: var(--olive-deep); border-color: var(--olive-deep); padding: 8px 12px; font-size: 0.75rem;" onclick="selectTariffFromModal('all', 3000, '8-12 недель')">Выбрать этот тариф</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- МОДАЛЬНОЕ ОКНО ГАЛЕРЕИ -->
   <div id="modal-kronstadt" class="project-modal" onclick="closeOnOutside(event, this)">
     <div class="modal-dialog">
       <div class="modal-header-banner">
@@ -1544,7 +1799,6 @@
       <div class="modal-body">
         <div class="modal-gallery-grid">
           
-          <!-- 1. 4.jpg -->
           <div class="modal-photo-card full-width" onclick="openLightbox(this)">
             <img src="4.jpg" alt="Гостиная: флористическое панно" loading="lazy" decoding="async">
             <div class="modal-photo-info">
@@ -1553,7 +1807,6 @@
             </div>
           </div>
 
-          <!-- 2. 7.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
             <img src="7.jpg" alt="Обеденная зона и витраж" loading="lazy" decoding="async">
             <div class="modal-photo-info">
@@ -1562,7 +1815,6 @@
             </div>
           </div>
 
-          <!-- 3. 8.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
             <img src="8.jpg" alt="Терракотовый диван и ковер" loading="lazy" decoding="async">
             <div class="modal-photo-info">
@@ -1571,7 +1823,6 @@
             </div>
           </div>
 
-          <!-- 4. 6.jpg -->
           <div class="modal-photo-card full-width" onclick="openLightbox(this)">
             <img src="6.jpg" alt="Кухня: орех и рифленое стекло" loading="lazy" decoding="async">
             <div class="modal-photo-info">
@@ -1580,7 +1831,6 @@
             </div>
           </div>
 
-          <!-- 5. krovat.jpg -->
           <div class="modal-photo-card full-width" onclick="openLightbox(this)">
             <img src="krovat.jpg" alt="Спальня: изумруд и хрусталь" loading="lazy" decoding="async">
             <div class="modal-photo-info">
@@ -1589,7 +1839,6 @@
             </div>
           </div>
 
-          <!-- 6. ugol.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
             <img src="ugol.jpg" alt="Угловая перспектива спальни" loading="lazy" decoding="async">
             <div class="modal-photo-info">
@@ -1598,7 +1847,6 @@
             </div>
           </div>
 
-          <!-- 7. tv.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
             <img src="tv.jpg" alt="Медиазона с подсветкой" loading="lazy" decoding="async">
             <div class="modal-photo-info">
@@ -1607,7 +1855,6 @@
             </div>
           </div>
 
-          <!-- 8. stena.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
             <img src="stena.jpg" alt="Скрытая дверь в гардеробную" loading="lazy" decoding="async">
             <div class="modal-photo-info">
@@ -1616,7 +1863,6 @@
             </div>
           </div>
 
-          <!-- 9. tumba.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
             <img src="tumba.jpg" alt="Прикроватная зона и шпон" loading="lazy" decoding="async">
             <div class="modal-photo-info">
@@ -1625,7 +1871,6 @@
             </div>
           </div>
 
-          <!-- 10. console 1.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
             <img src="console%201.jpg" alt="Туалетный столик с зеркалом" loading="lazy" decoding="async">
             <div class="modal-photo-info">
@@ -1634,7 +1879,6 @@
             </div>
           </div>
 
-          <!-- 11. console close.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
             <img src="console%20close.jpg" alt="Текстуры обоев и бра" loading="lazy" decoding="async">
             <div class="modal-photo-info">
@@ -1643,16 +1887,14 @@
             </div>
           </div>
 
-          <!-- 12. garderob 1.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="garderob%201.jpg" alt="Вход в гардеробную" loading="lazy" decoding="async">
+            <img src="garderob%201.jpg" alt="Перспектива гардеробной" loading="lazy" decoding="async">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Перспектива гардеробной</span>
               <span class="modal-photo-zone">Гардероб</span>
             </div>
           </div>
 
-          <!-- 13. garderob 3.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
             <img src="garderob%203.jpg" alt="Стеллажи для аксессуаров" loading="lazy" decoding="async">
             <div class="modal-photo-info">
@@ -1661,7 +1903,6 @@
             </div>
           </div>
 
-          <!-- 14. garderob 4.jpg -->
           <div class="modal-photo-card full-width" onclick="openLightbox(this)">
             <img src="garderob%204.jpg" alt="Система вешал со встроенным светом" loading="lazy" decoding="async">
             <div class="modal-photo-info">
@@ -1717,14 +1958,56 @@
       });
     }
 
+    // Состав тарифов
+    const tariffDetails = {
+      plan: {
+        title: 'В тариф «Планировка» входит:',
+        items: [
+          'Выезд замерщика на объект',
+          'Пакет чертежей (обмерный план, план демонтажа и монтажа)',
+          '3 варианта планировочных решений с расстановкой мебели'
+        ]
+      },
+      full: {
+        title: 'В тариф «Полный проект» входит:',
+        items: [
+          'Выезд замерщика на объект',
+          'Полный пакет рабочих чертежей для строителей',
+          '3D-визуализации всех помещений',
+          'Подбор мебели, чистовых материалов и освещения'
+        ]
+      },
+      all: {
+        title: 'В тариф «All Inclusive» входит:',
+        items: [
+          'Выезд замерщика на объект',
+          'Полный пакет рабочих чертежей для строителей',
+          '3D-визуализации всех помещений',
+          'Подбор мебели, чистовых материалов и освещения',
+          'Авторский надзор и контроль реализации проекта'
+        ]
+      }
+    };
+
     let currentRate = 1500;
     let currentTerm = '6-8 недель';
 
-    function setTariff(rate, term, element) {
+    function setTariff(type, rate, term, element) {
       currentRate = rate;
       currentTerm = term;
       document.querySelectorAll('.tariff-option').forEach(opt => opt.classList.remove('active'));
-      element.classList.add('active');
+      if (element) {
+        element.classList.add('active');
+      }
+
+      // Обновляем список того, что входит в тариф
+      const scopeData = tariffDetails[type];
+      if (scopeData) {
+        document.getElementById('scope-title').innerText = scopeData.title;
+        const listEl = document.getElementById('scope-items');
+        listEl.innerHTML = scopeData.items.map(item => `<li>${item}</li>`).join('');
+      }
+
       calculateProject();
     }
 
@@ -1734,6 +2017,29 @@
       const total = area * currentRate;
       document.getElementById('total-price').innerText = total.toLocaleString('ru-RU') + ' ₽';
       document.getElementById('project-term').innerText = 'Срок: ~' + currentTerm;
+    }
+
+    function openTariffModal() {
+      const modal = document.getElementById('modal-tariffs');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeTariffModal() {
+      const modal = document.getElementById('modal-tariffs');
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    function selectTariffFromModal(type, rate, term) {
+      const options = document.querySelectorAll('.tariff-option');
+      let targetEl = null;
+      if (type === 'plan') targetEl = options[0];
+      if (type === 'full') targetEl = options[1];
+      if (type === 'all') targetEl = options[2];
+
+      setTariff(type, rate, term, targetEl);
+      closeTariffModal();
     }
 
     function toggleFaq(element) {
