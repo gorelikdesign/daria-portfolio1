@@ -85,7 +85,7 @@
       transition: width 0.1s ease-out;
     }
 
-    /* Анимации появления при скролле */
+    /* Scroll Reveal */
     .reveal {
       opacity: 0;
       transform: translateY(28px);
@@ -652,55 +652,98 @@
       letter-spacing: 1px;
     }
 
-    /* БЛОК МАТЕРИАЛОВ И ФАКТУР (MOODBOARD) */
+    /* БЛОК МАТЕРИАЛОВ И ТАКТИЛЬНОСТИ (MOODBOARD) */
     .moodboard-section {
       background: var(--sand-accent);
       border-top: 1px solid var(--border-color);
       border-bottom: 1px solid var(--border-color);
     }
 
+    .moodboard-intro {
+      max-width: 860px;
+      margin: 0 auto 38px auto;
+      text-align: center;
+      background: var(--sand-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 18px;
+      padding: 30px 32px;
+    }
+
+    .moodboard-intro h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+
+    .moodboard-intro p {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .moodboard-intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    .moodboard-quote-author {
+      font-weight: 600;
+      color: var(--olive-deep);
+      display: inline-block;
+      border-top: 1px solid var(--border-color);
+      padding-top: 10px;
+      font-size: 0.88rem;
+    }
+
     .moodboard-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
     }
 
     .moodboard-card {
       background: var(--sand-card);
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 16px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: transform 0.25s ease;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .moodboard-card:hover {
       transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(62, 75, 49, 0.09);
     }
 
     .moodboard-img {
-      height: 180px;
+      height: 200px;
       width: 100%;
       object-fit: cover;
       background: #E2DBD0;
+      display: block;
     }
 
     .moodboard-info {
-      padding: 16px 18px;
+      padding: 18px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .moodboard-info h4 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.08rem;
+      font-size: 1.15rem;
       color: var(--text-dark);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .moodboard-info p {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
-      line-height: 1.45;
+      line-height: 1.55;
     }
 
     /* БЛОК СХЕМЫ РАЗРАБОТКИ */
@@ -752,89 +795,6 @@
       font-size: 0.85rem;
       color: var(--text-muted);
       line-height: 1.55;
-    }
-
-    /* ОТЗЫВЫ */
-    .reviews-section {
-      background: var(--sand-bg);
-    }
-
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 26px;
-    }
-
-    .review-card {
-      background: var(--sand-card);
-      border: 1.5px solid var(--border-color);
-      border-radius: 18px;
-      padding: 32px 28px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .review-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 30px rgba(62, 75, 49, 0.08);
-      border-color: var(--olive-light);
-    }
-
-    .review-stars {
-      display: flex;
-      gap: 4px;
-      color: #D4A373;
-      margin-bottom: 16px;
-      font-size: 1.05rem;
-    }
-
-    .review-text {
-      font-size: 0.92rem;
-      color: var(--text-dark);
-      line-height: 1.65;
-      margin-bottom: 22px;
-      font-style: italic;
-    }
-
-    .review-author-wrap {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      border-top: 1px solid var(--border-color);
-      padding-top: 18px;
-    }
-
-    .review-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--olive-deep);
-      color: #FFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    .review-author-info strong {
-      display: block;
-      font-size: 0.95rem;
-      color: var(--text-dark);
-      font-weight: 600;
-    }
-
-    .review-author-info span {
-      display: block;
-      font-size: 0.72rem;
-      color: var(--olive-main);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      font-weight: 500;
     }
 
     /* КАЛЬКУЛЯТОР */
@@ -1015,6 +975,402 @@
       margin-bottom: 20px;
     }
 
+    /* БЛОК О ДИЗАЙНЕРЕ */
+    .about-bio-banner {
+      background: var(--sand-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 18px;
+      padding: 35px 30px;
+      margin-bottom: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .about-bio-card {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .about-bio-badge {
+      display: inline-block;
+      align-self: flex-start;
+      background: var(--sand-accent);
+      color: var(--olive-deep);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+    }
+
+    .about-bio-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--text-dark);
+    }
+
+    .about-bio-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .about-card {
+      background: var(--sand-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 30px 24px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .about-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(62, 75, 49, 0.08);
+    }
+
+    .about-card-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: var(--sand-accent);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--terracotta);
+      margin-bottom: 16px;
+      transition: all 0.25s ease;
+    }
+
+    .about-card:hover .about-card-icon {
+      background: var(--olive-deep);
+      color: #FFF;
+      border-color: var(--olive-deep);
+    }
+
+    .about-card-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .about-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      color: var(--text-dark);
+    }
+
+    .about-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ОТЗЫВЫ */
+    .reviews-section {
+      background: var(--sand-bg);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 26px;
+    }
+
+    .review-card {
+      background: var(--sand-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 18px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(62, 75, 49, 0.08);
+      border-color: var(--olive-light);
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 4px;
+      color: #D4A373;
+      margin-bottom: 16px;
+      font-size: 1.05rem;
+    }
+
+    .review-text {
+      font-size: 0.92rem;
+      color: var(--text-dark);
+      line-height: 1.65;
+      margin-bottom: 22px;
+      font-style: italic;
+    }
+
+    .review-author-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 18px;
+    }
+
+    .review-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--olive-deep);
+      color: #FFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .review-author-info strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    .review-author-info span {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--olive-main);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+    }
+
+    /* FAQ */
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background: var(--sand-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      font-weight: 600;
+      gap: 12px;
+    }
+
+    .faq-icon {
+      font-size: 1.3rem;
+      color: var(--olive-main);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+      color: var(--terracotta);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 22px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 250px;
+      padding-bottom: 18px;
+    }
+
+    /* КОНТАКТЫ */
+    .contact-wrapper {
+      background: var(--sand-accent);
+      border-radius: 18px;
+      padding: 45px;
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 40px;
+      border: 1px solid var(--border-color);
+    }
+
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem;
+      margin-bottom: 12px;
+      color: var(--text-dark);
+    }
+
+    .contact-info p {
+      color: var(--text-muted);
+      margin-bottom: 25px;
+      font-size: 0.95rem;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 25px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    .contact-item-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--terracotta);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .social-links-grid {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .social-tag {
+      background: #FFF;
+      border: 1.5px solid var(--border-color);
+      padding: 9px 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.25s ease;
+    }
+
+    .social-icon-box {
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .social-icon-box svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      fill: currentColor;
+    }
+
+    .social-tag:hover {
+      border-color: var(--olive-main);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 14px rgba(62, 75, 49, 0.12);
+      color: var(--terracotta);
+    }
+
+    /* Форма-анкета */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      color: var(--olive-deep);
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: #FFF;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.88rem;
+      color: var(--text-dark);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--olive-main);
+    }
+
+    .fab-contact {
+      position: fixed;
+      bottom: max(20px, env(safe-area-inset-bottom));
+      right: 18px;
+      background: var(--terracotta);
+      color: #FFF;
+      padding: 12px 20px;
+      border-radius: 35px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 20px rgba(164, 92, 73, 0.4);
+      z-index: 190;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
     /* МОДАЛЬНОЕ ОКНО ТАРИФОВ */
     .tariff-modal-overlay {
       display: none;
@@ -1185,319 +1541,6 @@
       justify-content: center;
     }
 
-    /* FAQ */
-    .faq-list {
-      max-width: 800px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .faq-item {
-      background: var(--sand-card);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .faq-question {
-      padding: 18px 22px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      color: var(--text-dark);
-      font-weight: 600;
-      gap: 12px;
-    }
-
-    .faq-icon {
-      font-size: 1.3rem;
-      color: var(--olive-main);
-      transition: transform 0.3s ease;
-      flex-shrink: 0;
-    }
-
-    .faq-item.active .faq-icon {
-      transform: rotate(45deg);
-      color: var(--terracotta);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
-      padding: 0 22px;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    .faq-item.active .faq-answer {
-      max-height: 250px;
-      padding-bottom: 18px;
-    }
-
-    /* БЛОК О ДИЗАЙНЕРЕ */
-    .about-bio-banner {
-      background: var(--sand-card);
-      border: 1.5px solid var(--border-color);
-      border-radius: 18px;
-      padding: 35px 30px;
-      margin-bottom: 30px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-    }
-
-    .about-bio-card {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .about-bio-badge {
-      display: inline-block;
-      align-self: flex-start;
-      background: var(--sand-accent);
-      color: var(--olive-deep);
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 4px 10px;
-      border-radius: 6px;
-      border: 1px solid var(--border-color);
-    }
-
-    .about-bio-card h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      color: var(--text-dark);
-    }
-
-    .about-bio-card p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 22px;
-    }
-
-    .about-card {
-      background: var(--sand-card);
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
-      padding: 30px 24px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .about-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 24px rgba(62, 75, 49, 0.08);
-    }
-
-    .about-card-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
-      background: var(--sand-accent);
-      border: 1px solid var(--border-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--terracotta);
-      margin-bottom: 16px;
-      transition: all 0.25s ease;
-    }
-
-    .about-card:hover .about-card-icon {
-      background: var(--olive-deep);
-      color: #FFF;
-      border-color: var(--olive-deep);
-    }
-
-    .about-card-icon svg {
-      width: 24px;
-      height: 24px;
-      fill: currentColor;
-    }
-
-    .about-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem;
-      margin-bottom: 10px;
-      color: var(--text-dark);
-    }
-
-    .about-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* КОНТАКТЫ */
-    .contact-wrapper {
-      background: var(--sand-accent);
-      border-radius: 18px;
-      padding: 45px;
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 40px;
-      border: 1px solid var(--border-color);
-    }
-
-    .contact-info h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.9rem;
-      margin-bottom: 12px;
-      color: var(--text-dark);
-    }
-
-    .contact-info p {
-      color: var(--text-muted);
-      margin-bottom: 25px;
-      font-size: 0.95rem;
-    }
-
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-bottom: 25px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--text-dark);
-      font-size: 0.95rem;
-      text-decoration: none;
-    }
-
-    .contact-item-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--terracotta);
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .social-links-grid {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .social-tag {
-      background: #FFF;
-      border: 1.5px solid var(--border-color);
-      padding: 9px 18px;
-      border-radius: 25px;
-      text-decoration: none;
-      color: var(--text-dark);
-      font-size: 0.85rem;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.25s ease;
-    }
-
-    .social-icon-box {
-      width: 18px;
-      height: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .social-icon-box svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-      fill: currentColor;
-    }
-
-    .social-tag:hover {
-      border-color: var(--olive-main);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 14px rgba(62, 75, 49, 0.12);
-      color: var(--terracotta);
-    }
-
-    /* Форма-анкета */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .form-grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .form-group label {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 600;
-      color: var(--olive-deep);
-    }
-
-    .form-input, .form-select, .form-textarea {
-      width: 100%;
-      padding: 12px 14px;
-      background: #FFF;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 0.88rem;
-      color: var(--text-dark);
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .form-input:focus, .form-select:focus, .form-textarea:focus {
-      border-color: var(--olive-main);
-    }
-
-    .fab-contact {
-      position: fixed;
-      bottom: max(20px, env(safe-area-inset-bottom));
-      right: 18px;
-      background: var(--terracotta);
-      color: #FFF;
-      padding: 12px 20px;
-      border-radius: 35px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.8rem;
-      letter-spacing: 0.5px;
-      box-shadow: 0 8px 20px rgba(164, 92, 73, 0.4);
-      z-index: 190;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
     /* МОДАЛЬНОЕ ОКНО ГАЛЕРЕИ */
     .project-modal {
       display: none;
@@ -1613,7 +1656,6 @@
       font-weight: 600;
     }
 
-    /* Кнопка быстрого действия внутри модального окна */
     .modal-action-footer {
       margin-top: 35px;
       padding: 25px 20px;
@@ -1808,8 +1850,8 @@
     <a href="#projects" onclick="toggleMobileMenu()">Проекты</a>
     <a href="#materials" onclick="toggleMobileMenu()">Материалы</a>
     <a href="#workflow" onclick="toggleMobileMenu()">Этапы работы</a>
-    <a href="#reviews" onclick="toggleMobileMenu()">Отзывы</a>
     <a href="#calc" onclick="toggleMobileMenu()">Калькулятор</a>
+    <a href="#reviews" onclick="toggleMobileMenu()">Отзывы</a>
     <a href="#faq" onclick="toggleMobileMenu()">FAQ</a>
     <a href="#contacts" onclick="toggleMobileMenu()">Контакты</a>
   </div>
@@ -1837,8 +1879,8 @@
         <a href="#projects">Проекты</a>
         <a href="#materials">Материалы</a>
         <a href="#workflow">Этапы работы</a>
-        <a href="#reviews">Отзывы</a>
         <a href="#calc">Калькулятор</a>
+        <a href="#reviews">Отзывы</a>
         <a href="#faq">FAQ</a>
         <a href="#contacts">Контакты</a>
       </nav>
@@ -1879,7 +1921,6 @@
         <h2 class="section-title">Выполненные проекты</h2>
       </div>
 
-      <!-- Кнопки фильтрации -->
       <div class="portfolio-filters">
         <button class="filter-btn active" onclick="filterProjects('all', this)">Все проекты</button>
         <button class="filter-btn" onclick="filterProjects('apartments', this)">Городские квартиры</button>
@@ -1938,11 +1979,20 @@
       </div>
     </section>
 
-    <!-- БЛОК МАТЕРИАЛОВ И ФАКТУР (MOODBOARD) -->
+    <!-- БЛОК МАТЕРИАЛОВ И ТАКТИЛЬНОСТИ (MOODBOARD) -->
     <section id="materials" class="moodboard-section reveal">
       <div class="section-header">
         <span class="section-subtitle">Эстетика и детали</span>
         <h2 class="section-title">Материалы и тактильность</h2>
+      </div>
+
+      <div class="moodboard-intro">
+        <h3>Гармония фактур — основа атмосферы дома</h3>
+        <p>Интерьер оживает не на экране чертежей, а в момент первого прикосновения к теплым деревянным панелям, прохладному натуральному камню и мягкому текстилю. Грамотно подобранные материалы создают неповторимый микроклимат, радуют глаз при разном освещении и сохраняют актуальность годами.</p>
+        <p><em>«Я с радостью помогу вам подобрать индивидуальную палитру чистовых материалов, мебели и текстиля, которая идеально отразит ваш характер, образ жизни и создаст ощущение истинного дома.»</em></p>
+        <div style="margin-top: 14px;">
+          <span class="moodboard-quote-author">Дарья Горелик • Авторский подбор материалов</span>
+        </div>
       </div>
 
       <div class="moodboard-grid">
@@ -1950,32 +2000,48 @@
         <div class="moodboard-card">
           <img class="moodboard-img" src="https://images.unsplash.com/photo-1546484396-fb3fc6f95f98?auto=format&fit=crop&w=600&q=80" alt="Шпон американского ореха">
           <div class="moodboard-info">
-            <h4>Шпон ореха</h4>
-            <p>Глубокая натуральная текстура для стеновых панелей и парящих консолей.</p>
+            <h4>Шпон американского ореха</h4>
+            <p>Глубокая натуральная текстура для стеновых панелей, кухонных фасадов и парящих тумб.</p>
           </div>
         </div>
 
         <div class="moodboard-card">
-          <img class="moodboard-img" src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=600&q=80" alt="Терракота и глина">
+          <img class="moodboard-img" src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=600&q=80" alt="Терракота и природная охра">
           <div class="moodboard-info">
             <h4>Терракота и охра</h4>
-            <p>Теплые природные пигменты, создающие ощущение уюта и камерности.</p>
+            <p>Теплые природные пигменты, создающие ощущение камерности, солнца и эмоционального тепла.</p>
           </div>
         </div>
 
         <div class="moodboard-card">
-          <img class="moodboard-img" src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=600&q=80" alt="Рифленое стекло">
+          <img class="moodboard-img" src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=600&q=80" alt="Рифленое стекло и свет">
           <div class="moodboard-info">
             <h4>Рифленое стекло</h4>
-            <p>Легкие перегородки, мягко рассеивающие дневной и вечерний свет.</p>
+            <p>Легкие полупрозрачные перегородки, зонирующие пространство и мягко рассеивающие свет.</p>
           </div>
         </div>
 
         <div class="moodboard-card">
-          <img class="moodboard-img" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" alt="Текстиль и латунь">
+          <img class="moodboard-img" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" alt="Ткань букле и матовая латунь">
           <div class="moodboard-info">
             <h4>Букле и матовая латунь</h4>
-            <p>Тактильные ткани и благородные металлические акценты в фурнитуре.</p>
+            <p>Тактильные объёмные ткани и благородные металлические акценты в дизайнерской фурнитуре.</p>
+          </div>
+        </div>
+
+        <div class="moodboard-card">
+          <img class="moodboard-img" src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=600&q=80" alt="Крупноформатный керамогранит">
+          <div class="moodboard-info">
+            <h4>Травертин и керамогранит</h4>
+            <p>Элегантные каменные поверхности с естественными прожилками для ванных и кухонных зон.</p>
+          </div>
+        </div>
+
+        <div class="moodboard-card">
+          <img class="moodboard-img" src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=600&q=80" alt="Многоуровневый сценарий освещения">
+          <div class="moodboard-info">
+            <h4>Световые сценарии</h4>
+            <p>Теплый рассеянный свет, подчеркивающий рельеф стен и глубину выбранных оттенков.</p>
           </div>
         </div>
 
@@ -2031,60 +2097,6 @@
           <div class="workflow-num">07</div>
           <h4>Сдача готового проекта</h4>
           <p>Передача полного альбома рабочей документации, 3D-визуализаций и спецификаций для запуска строительных работ.</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ОТЗЫВЫ КЛИЕНТОВ -->
-    <section id="reviews" class="reviews-section reveal">
-      <div class="section-header">
-        <span class="section-subtitle">Доверие заказчиков</span>
-        <h2 class="section-title">Отзывы о работе</h2>
-      </div>
-
-      <div class="reviews-grid">
-        
-        <div class="review-card">
-          <div>
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">«Дарья превосходно решила задачу с перепланировкой и гардеробной в нашей квартире в Кронштадте. Цветовая гамма с терракотой и шпоном превзошла все ожидания, а строители отдельно похвалили детальные чертежи разверток.»</p>
-          </div>
-          <div class="review-author-wrap">
-            <div class="review-avatar">ЕК</div>
-            <div class="review-author-info">
-              <strong>Елена и Константин</strong>
-              <span>Апартаменты 65 м² • Кронштадт (Полный проект)</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div>
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">«Очень тонкое чувство цвета и света! Мы сомневались насчет темных глубоких оттенков в спальне, но благодаря визуализациям увидели, как это стильно и уютно. Проект сдан вовремя, без задержек.»</p>
-          </div>
-          <div class="review-author-wrap">
-            <div class="review-avatar">МА</div>
-            <div class="review-author-info">
-              <strong>Максим Андреев</strong>
-              <span>Новостройка 78 м² • Санкт-Петербург (All Inclusive)</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="review-card">
-          <div>
-            <div class="review-stars">★★★★★</div>
-            <p class="review-text">«Работаем дистанционно. Дарья всегда была на связи, предложила 3 отличных варианта планировки, один из которых идеально решил вопрос с рабочим местом и хранением. Рекомендую как внимательного специалиста!»</p>
-          </div>
-          <div class="review-author-wrap">
-            <div class="review-avatar">АС</div>
-            <div class="review-author-info">
-              <strong>Анна Смирнова</strong>
-              <span>Квартира 54 м² • Онлайн-проект (Планировка + 3D)</span>
-            </div>
-          </div>
         </div>
 
       </div>
@@ -2212,6 +2224,60 @@
           </div>
           <h3>Многоуровневый свет</h3>
           <p>От акцентных подвесов до скрытых LED-подсветок и настенных бра для разнообразных сценариев освещения.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ОТЗЫВЫ КЛИЕНТОВ (РАСПОЛОЖЕНЫ НАД FAQ) -->
+    <section id="reviews" class="reviews-section reveal">
+      <div class="section-header">
+        <span class="section-subtitle">Доверие заказчиков</span>
+        <h2 class="section-title">Отзывы о работе</h2>
+      </div>
+
+      <div class="reviews-grid">
+        
+        <div class="review-card">
+          <div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">«Дарья превосходно решила задачу с перепланировкой и гардеробной в нашей квартире в Кронштадте. Цветовая гамма с терракотой и шпоном превзошла все ожидания, а строители отдельно похвалили детальные чертежи разверток.»</p>
+          </div>
+          <div class="review-author-wrap">
+            <div class="review-avatar">ЕК</div>
+            <div class="review-author-info">
+              <strong>Елена и Константин</strong>
+              <span>Апартаменты 65 м² • Кронштадт (Полный проект)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">«Очень тонкое чувство цвета и света! Мы сомневались насчет темных глубоких оттенков в спальне, но благодаря визуализациям увидели, как это стильно и уютно. Проект сдан вовремя, без задержек.»</p>
+          </div>
+          <div class="review-author-wrap">
+            <div class="review-avatar">МА</div>
+            <div class="review-author-info">
+              <strong>Максим Андреев</strong>
+              <span>Новостройка 78 м² • Санкт-Петербург (All Inclusive)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div>
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">«Работаем дистанционно. Дарья всегда была на связи, предложила 3 отличных варианта планировки, один из которых идеально решил вопрос с рабочим местом и хранением. Рекомендую как внимательного специалиста!»</p>
+          </div>
+          <div class="review-author-wrap">
+            <div class="review-avatar">АС</div>
+            <div class="review-author-info">
+              <strong>Анна Смирнова</strong>
+              <span>Квартира 54 м² • Онлайн-проект (Планировка + 3D)</span>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -2607,7 +2673,7 @@
 
         </div>
 
-        <!-- Быстрая кнопка действия (Пункт 6) -->
+        <!-- Быстрая кнопка действия -->
         <div class="modal-action-footer">
           <h4>Понравилось решение в этом проекте?</h4>
           <p>Разработаем индивидуальную планировку и концепцию с учетом параметров вашей квартиры.</p>
@@ -2715,8 +2781,8 @@
       const follower = document.getElementById('cursor-follower');
 
       document.addEventListener('mousemove', (e) => {
-        cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-        follower.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+        cursor.style.transform = `translate3d(${e.clientX}px,${e.clientY}px, 0)`;
+        follower.style.transform = `translate3d(${e.clientX}px,${e.clientY}px, 0)`;
       });
 
       document.querySelectorAll('.hover-trigger').forEach(el => {
