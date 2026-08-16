@@ -19,8 +19,8 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Дарья Горелик Дизайн">
   <meta property="og:description" content="Интерьеры со смыслом, характером и светом. Портфолио выполненных проектов и онлайн-калькулятор.">
-  <meta property="og:image" content="https://gorelikdesign.github.io/daria-portfolio1/4.jpg">
-  <meta property="og:url" content="https://gorelikdesign.github.io/daria-portfolio1/">
+  <meta property="og:image" content="https://gorelik-design.ru/4.jpg">
+  <meta property="og:url" content="https://gorelik-design.ru/">
   <meta property="og:type" content="website">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1720,7 +1720,7 @@
         </svg>
         <div class="logo-text">
           <span class="logo-title">Дарья Горелик</span>
-          <span class="logo-subtitle">Interior Architecture</span>
+          <span class="logo-subtitle">Interior Design</span>
         </div>
       </a>
 
@@ -2220,7 +2220,7 @@
 
     <footer>
       <div>© 2026 Студия дизайна интерьера Дарьи Горелик.</div>
-      <div>DG | Daria Gorelik Interior Architecture</div>
+      <div>DG | Daria Gorelik Interior Design</div>
     </footer>
 
   </div>
@@ -2466,6 +2466,16 @@
     document.addEventListener('dragstart', (e) => {
       if (e.target.tagName === 'IMG') {
         e.preventDefault();
+      }
+    });
+
+    // Закрытие всех модальных окон по нажатию клавиши Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeTariffModal();
+        closeProjectModal('modal-kronstadt');
+        const lb = document.getElementById('lightbox');
+        if (lb) lb.style.display = 'none';
       }
     });
 
