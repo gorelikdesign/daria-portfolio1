@@ -50,6 +50,17 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    /* Защита всех изображений на уровне CSS */
+    img {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-user-drag: none;
+      -webkit-touch-callout: none;
+      pointer-events: auto;
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -774,7 +785,7 @@
       margin-bottom: 20px;
     }
 
-    /* МОДАЛЬНОЕ ОКНО ТАРИФОВ (УВЕЛИЧЕНО И ОПТИМИЗИРОВАНО) */
+    /* МОДАЛЬНОЕ ОКНО ТАРИФОВ */
     .tariff-modal-overlay {
       display: none;
       position: fixed;
@@ -1744,7 +1755,7 @@
         </div>
       </div>
 
-      <!-- КАРТОЧКИ ПОДХОДА -->
+      <!-- КАРТОЧКИ ПОДХОДА С ВЕКТОРНЫМИ ЗНАЧКАМИ -->
       <div class="about-grid">
         
         <div class="about-card">
@@ -1912,7 +1923,7 @@
 
   </div>
 
-  <!-- МОДАЛЬНОЕ ОКНО ТАРИФОВ (УЛУЧШЕННОЕ) -->
+  <!-- МОДАЛЬНОЕ ОКНО ТАРИФОВ -->
   <div id="modal-tariffs" class="tariff-modal-overlay" onclick="closeOnOutside(event, this)">
     <div class="tariff-modal-content">
       <div class="tariff-modal-header">
@@ -2143,6 +2154,19 @@
   </div>
 
   <script>
+    // Запрет сохранения и перетаскивания картинок
+    document.addEventListener('contextmenu', (e) => {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+      }
+    });
+
+    document.addEventListener('dragstart', (e) => {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+      }
+    });
+
     function toggleMobileMenu() {
       const menu = document.getElementById('mobile-menu');
       const btn = document.getElementById('burger-toggle');
