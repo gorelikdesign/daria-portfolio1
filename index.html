@@ -631,10 +631,10 @@
       background: rgba(164, 92, 73, 0.12);
       border: 1px solid var(--terracotta);
       color: var(--terracotta-dark);
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 600;
-      padding: 3px 9px;
-      border-radius: 14px;
+      padding: 4px 12px;
+      border-radius: 16px;
       cursor: pointer;
       text-transform: none;
       letter-spacing: 0;
@@ -774,28 +774,26 @@
       margin-bottom: 20px;
     }
 
-    /* МОДАЛКА ТАРИФОВ */
+    /* МОДАЛЬНОЕ ОКНО ТАРИФОВ (УВЕЛИЧЕНО И ОПТИМИЗИРОВАНО) */
     .tariff-modal-overlay {
       display: none;
       position: fixed;
       z-index: 3000;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(26, 33, 20, 0.94);
+      background: rgba(26, 33, 20, 0.92);
       backdrop-filter: blur(8px);
-      padding: 20px 15px;
+      padding: 40px 20px;
       overflow-y: auto;
-      align-items: center;
-      justify-content: center;
     }
 
     .tariff-modal-content {
       background: var(--sand-bg);
-      border-radius: 18px;
-      max-width: 780px;
+      border-radius: 20px;
+      max-width: 1060px;
       width: 100%;
       margin: auto;
       overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.45);
       border: 1px solid var(--border-color);
       position: relative;
     }
@@ -803,95 +801,157 @@
     .tariff-modal-header {
       background: var(--olive-deep);
       color: #FFF;
-      padding: 25px 30px;
+      padding: 30px 40px;
       position: relative;
     }
 
     .tariff-modal-header h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      margin-bottom: 4px;
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      margin-bottom: 6px;
     }
 
     .tariff-modal-header p {
-      font-size: 0.85rem;
-      opacity: 0.85;
+      font-size: 0.9rem;
+      opacity: 0.88;
     }
 
     .tariff-modal-body {
-      padding: 25px 30px;
+      padding: 35px 35px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: stretch;
     }
 
     .tariff-modal-card {
       background: var(--sand-card);
       border: 1.5px solid var(--border-color);
-      border-radius: 12px;
-      padding: 20px;
+      border-radius: 16px;
+      padding: 26px 22px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .tariff-modal-card.highlight {
       border-color: var(--terracotta);
-      box-shadow: 0 6px 20px rgba(164, 92, 73, 0.12);
+      box-shadow: 0 10px 30px rgba(164, 92, 73, 0.15);
+      background: #FFFFFF;
+      position: relative;
+    }
+
+    .tariff-badge-top {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--terracotta);
+      color: #FFF;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 3px 12px;
+      border-radius: 12px;
     }
 
     .tariff-modal-card h4 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
+      font-size: 1.35rem;
       color: var(--text-dark);
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
     .tariff-modal-card .tariff-price-badge {
-      font-size: 0.8rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      color: var(--terracotta);
-      margin-bottom: 14px;
+      color: var(--olive-deep);
+      margin-bottom: 4px;
+    }
+
+    .tariff-modal-card .tariff-term-badge {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      display: block;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 12px;
     }
 
     .tariff-modal-card ul {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-bottom: 15px;
+      gap: 12px;
+      margin-bottom: 24px;
     }
 
     .tariff-modal-card ul li {
       display: flex;
       align-items: flex-start;
-      gap: 6px;
-      line-height: 1.4;
+      gap: 10px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--text-dark);
     }
 
-    .tariff-modal-card ul li::before {
-      content: '✓';
-      color: var(--olive-main);
-      font-weight: 700;
+    .tariff-modal-card ul li span.check-icon {
+      color: var(--terracotta);
+      font-weight: bold;
+      font-size: 1rem;
+      line-height: 1.2;
+      flex-shrink: 0;
+    }
+
+    .btn-tariff-select {
+      width: 100%;
+      margin-top: auto;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1.5px solid var(--olive-deep);
+      background: transparent;
+      color: var(--olive-deep);
+    }
+
+    .btn-tariff-select:hover, .tariff-modal-card.highlight .btn-tariff-select {
+      background: var(--terracotta);
+      border-color: var(--terracotta);
+      color: #FFF;
+    }
+
+    .tariff-modal-card.highlight .btn-tariff-select:hover {
+      background: var(--terracotta-dark);
+      border-color: var(--terracotta-dark);
     }
 
     .btn-close-tariff {
       position: absolute;
-      top: 16px;
-      right: 16px;
+      top: 20px;
+      right: 20px;
       background: rgba(255,255,255,0.15);
       border: none;
       color: #FFF;
-      width: 34px;
-      height: 34px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .btn-close-tariff:hover {
+      background: rgba(255,255,255,0.3);
     }
 
     .faq-list {
@@ -1051,7 +1111,7 @@
       line-height: 1.6;
     }
 
-    /* КОНТАКТЫ И СОЦСЕТИ */
+    /* КОНТАКТЫ */
     .contact-wrapper {
       background: var(--sand-accent);
       border-radius: 18px;
@@ -1344,6 +1404,21 @@
       color: var(--text-muted);
       flex-wrap: wrap;
       gap: 10px;
+    }
+
+    /* АДАПТИВНОСТЬ */
+    @media (max-width: 960px) {
+      .tariff-modal-body {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 25px 20px;
+      }
+      .tariff-modal-header {
+        padding: 25px 20px;
+      }
+      .tariff-modal-overlay {
+        padding: 20px 10px;
+      }
     }
 
     @media (max-width: 900px) {
@@ -1644,7 +1719,7 @@
       </div>
     </section>
 
-    <!-- О ДИЗАЙНЕРЕ С ИКОНКАМИ ПОДХОДА -->
+    <!-- О ДИЗАЙНЕРЕ -->
     <section id="about">
       <div class="section-header">
         <span class="section-subtitle">Об авторе</span>
@@ -1669,10 +1744,9 @@
         </div>
       </div>
 
-      <!-- КАРТОЧКИ ПОДХОДА С ВЕКТОРНЫМИ ЗНАЧКАМИ -->
+      <!-- КАРТОЧКИ ПОДХОДА -->
       <div class="about-grid">
         
-        <!-- Значок: Палитра цветов -->
         <div class="about-card">
           <div class="about-card-icon">
             <svg viewBox="0 0 24 24">
@@ -1683,7 +1757,6 @@
           <p>Сочетание глубоких природных тонов (терракота, изумруд, оливковый, охра) создает ощущение уюта и благородства.</p>
         </div>
 
-        <!-- Значок: Архитектурные линии / Эргономика -->
         <div class="about-card">
           <div class="about-card-icon">
             <svg viewBox="0 0 24 24">
@@ -1694,7 +1767,6 @@
           <p>Двери скрытого монтажа, встроенные системы хранения и функциональные гардеробные сохраняют чистоту линий.</p>
         </div>
 
-        <!-- Значок: Светильник / Световой сценарий -->
         <div class="about-card">
           <div class="about-card-icon">
             <svg viewBox="0 0 24 24">
@@ -1840,56 +1912,95 @@
 
   </div>
 
-  <!-- МОДАЛЬНОЕ ОКНО ТАРИФОВ -->
+  <!-- МОДАЛЬНОЕ ОКНО ТАРИФОВ (УЛУЧШЕННОЕ) -->
   <div id="modal-tariffs" class="tariff-modal-overlay" onclick="closeOnOutside(event, this)">
     <div class="tariff-modal-content">
       <div class="tariff-modal-header">
-        <button class="btn-close-tariff" onclick="closeTariffModal()">✕</button>
-        <h3>Что входит в каждый тариф?</h3>
-        <p>Прозрачный состав работ без скрытых платежей и переплат</p>
+        <button class="btn-close-tariff" onclick="closeTariffModal()" aria-label="Закрыть">✕</button>
+        <h3>Сравнение тарифов дизайн-проекта</h3>
+        <p>Подробный состав каждого пакета: от базовой планировки до полного авторского сопровождения</p>
       </div>
       <div class="tariff-modal-body">
         
+        <!-- Карточка 1: Планировка -->
         <div class="tariff-modal-card">
           <div>
             <h4>Планировка</h4>
-            <div class="tariff-price-badge">800 ₽/м² • ~3-4 недели</div>
+            <div class="tariff-price-badge">800 ₽ / м²</div>
+            <span class="tariff-term-badge">Срок выполнения: ~3-4 недели</span>
             <ul>
-              <li><strong>Выезд замерщика</strong> на объект</li>
-              <li><strong>Пакет чертежей</strong> (обмерный план, план демонтажа и монтажа)</li>
-              <li><strong>3 варианта планировочных решений</strong> с расстановкой мебели</li>
+              <li>
+                <span class="check-icon">✓</span>
+                <span><strong>Выезд замерщика</strong> и фиксация параметров объекта</span>
+              </li>
+              <li>
+                <span class="check-icon">✓</span>
+                <span><strong>Пакет чертежей</strong>: обмерный план, схемы демонтажа и монтажа</span>
+              </li>
+              <li>
+                <span class="check-icon">✓</span>
+                <span><strong>3 варианта планировочных решений</strong> с детальной расстановкой мебели</span>
+              </li>
             </ul>
           </div>
-          <button class="btn btn-outline" style="color: var(--olive-deep); border-color: var(--olive-deep); padding: 8px 12px; font-size: 0.75rem;" onclick="selectTariffFromModal('plan', 800, '3-4 недели')">Выбрать этот тариф</button>
+          <button class="btn-tariff-select" onclick="selectTariffFromModal('plan', 800, '3-4 недели')">Выбрать этот тариф</button>
         </div>
 
+        <!-- Карточка 2: Полный проект -->
         <div class="tariff-modal-card highlight">
+          <div class="tariff-badge-top">Популярный выбор</div>
           <div>
             <h4>Полный проект</h4>
-            <div class="tariff-price-badge">1 500 ₽/м² • ~6-8 недель</div>
+            <div class="tariff-price-badge" style="color: var(--terracotta);">1 500 ₽ / м²</div>
+            <span class="tariff-term-badge">Срок выполнения: ~6-8 недель</span>
             <ul>
-              <li><strong>Выезд замерщика</strong> на объект</li>
-              <li><strong>Полный пакет чертежей</strong> для строителей</li>
-              <li><strong>3D-визуализации</strong> всех помещений</li>
-              <li><strong>Подбор мебели, чистовых материалов и освещения</strong></li>
+              <li>
+                <span class="check-icon">✓</span>
+                <span><strong>Выезд замерщика</strong> и фотофиксация</span>
+              </li>
+              <li>
+                <span class="check-icon">✓</span>
+                <span><strong>Полный пакет рабочих чертежей</strong> для строительной бригады</span>
+              </li>
+              <li>
+                <span class="check-icon">✓</span>
+                <span><strong>Фотореалистичные 3D-визуализации</strong> всех помещений</span>
+              </li>
+              <li>
+                <span class="check-icon">✓</span>
+                <span><strong>Ведомость и подбор</strong> чистовых материалов, мебели и освещения</span>
+              </li>
             </ul>
           </div>
-          <button class="btn btn-primary" style="padding: 8px 12px; font-size: 0.75rem;" onclick="selectTariffFromModal('full', 1500, '6-8 недель')">Выбрать этот тариф</button>
+          <button class="btn-tariff-select" onclick="selectTariffFromModal('full', 1500, '6-8 недель')">Выбрать этот тариф</button>
         </div>
 
+        <!-- Карточка 3: All Inclusive -->
         <div class="tariff-modal-card">
           <div>
             <h4>All Inclusive</h4>
-            <div class="tariff-price-badge">3 000 ₽/м² • ~8-12 недель</div>
+            <div class="tariff-price-badge">3 000 ₽ / м²</div>
+            <span class="tariff-term-badge">Срок выполнения: ~8-12 недель</span>
             <ul>
-              <li><strong>Выезд замерщика</strong> на объект</li>
-              <li><strong>Полный пакет чертежей</strong> для строителей</li>
-              <li><strong>3D-визуализации</strong> всех помещений</li>
-              <li><strong>Подбор мебели, чистовых материалов и освещения</strong></li>
-              <li><strong>Авторский надзор</strong> и контроль реализации</li>
+              <li>
+                <span class="check-icon">✓</span>
+                <span><strong>Выезд замерщика</strong> на объект</span>
+              </li>
+              <li>
+                <span class="check-icon">✓</span>
+                <span><strong>Полный пакет рабочих чертежей</strong> и 3D-визуализации</span>
+              </li>
+              <li>
+                <span class="check-icon">✓</span>
+                <span><strong>Комплектация под ключ</strong>: закупка мебели, света и материалов с партнерскими скидками</span>
+              </li>
+              <li>
+                <span class="check-icon">✓</span>
+                <span><strong>Авторский надзор</strong>: регулярные выезды на стройку и контроль реализации</span>
+              </li>
             </ul>
           </div>
-          <button class="btn btn-outline" style="color: var(--olive-deep); border-color: var(--olive-deep); padding: 8px 12px; font-size: 0.75rem;" onclick="selectTariffFromModal('all', 3000, '8-12 недель')">Выбрать этот тариф</button>
+          <button class="btn-tariff-select" onclick="selectTariffFromModal('all', 3000, '8-12 недель')">Выбрать этот тариф</button>
         </div>
 
       </div>
