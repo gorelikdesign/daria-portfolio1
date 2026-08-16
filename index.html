@@ -567,40 +567,19 @@
       display: flex;
       flex-direction: column;
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
-      position: relative;
     }
     .moodboard-card:hover {
       transform: translateY(-6px) scale(1.01);
       box-shadow: 0 16px 32px rgba(62, 75, 49, 0.12);
       border-color: var(--terracotta);
     }
-    .moodboard-card::before {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 120px; height: 120px;
-      opacity: 0;
-      transition: opacity 0.4s ease, transform 0.4s ease;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: 75px;
-      z-index: 1;
-      pointer-events: none;
-      transform: scale(0.8);
-    }
-    .moodboard-card:hover::before { opacity: 0.1; transform: scale(1); }
-
-    .card-palette::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23A45C49'%3E%3Cpath d='M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-4.25 10c-.69 0-1.25-.56-1.25-1.25S7.06 10.5 7.75 10.5 9 11.06 9 11.75 8.44 13 7.75 13zm1.5-3c-.69 0-1.25-.56-1.25-1.25S8.56 7.5 9.25 7.5 10.5 8.06 10.5 8.75 9.94 10 9.25 10zm4.5 0c-.69 0-1.25-.56-1.25-1.25S13.06 7.5 13.75 7.5 15 8.06 15 8.75 14.44 10 13.75 10zm1.5 3c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z'/%3E%3C/svg%3E"); }
-    .card-grid::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233E4B31'%3E%3Cpath d='M4 4h16v16H4V4zm2 2v4h4V6H6zm6 0v4h4V6h-4zM6 12v4h4v-4H6zm6 0v4h4v-4h-4z'/%3E%3C/svg%3E"); }
-    .card-lamp::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23D4A373'%3E%3Cpath d='M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z'/%3E%3C/svg%3E"); }
-
     .moodboard-img { height: 200px; width: 100%; object-fit: cover; display: block; filter: saturate(0.9); transition: filter 0.4s ease; }
     .moodboard-card:hover .moodboard-img { filter: saturate(1.1); }
     .moodboard-info { padding: 18px 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
     .moodboard-info h4 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--text-dark); margin-bottom: 6px; }
     .moodboard-info p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; }
 
-    /* ЭТАПЫ РАБОТЫ (С ГРАФИЧЕСКИМИ ИКОНКАМИ ПРИ НАВЕДЕНИИ) */
+    /* ЭТАПЫ РАБОТЫ (7 ПУНКТОВ) */
     .workflow-section { background: var(--sand-card); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
     .workflow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
     .workflow-card {
@@ -641,6 +620,7 @@
     .step-concept::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23A45C49'%3E%3Cpath d='M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19h4.43c.96.61 2.11 1 3.22 1 4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z'/%3E%3C/svg%3E"); }
     .step-drawings::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233E4B31'%3E%3Cpath d='M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.5 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z'/%3E%3C/svg%3E"); }
     .step-supervision::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23D4A373'%3E%3Cpath d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z'/%3E%3C/svg%3E"); }
+    .step-delivery::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23A45C49'%3E%3Cpath d='M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z'/%3E%3C/svg%3E"); }
 
     .workflow-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--terracotta); line-height: 1; margin-bottom: 12px; }
     .workflow-card h4 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--text-dark); margin-bottom: 8px; }
@@ -921,7 +901,7 @@
 
     <div class="section-divider"></div>
 
-    <!-- ПОРТФОЛИО С ФИЛЬТРАЦИЕЙ -->
+    <!-- ПОРТФОЛИО С ФИЛЬТРАЦИЕЙ (ВСЕГО 4 ФОТО КЕЙСА) -->
     <section id="projects" class="reveal">
       <div class="section-header">
         <span class="section-subtitle">Портфолио</span>
@@ -936,11 +916,11 @@
 
       <div class="projects-container">
         
-        <!-- КЕЙС: Кронштадт -->
+        <!-- КЕЙС: Кронштадт (4 фото) -->
         <div class="project-card-btn hover-trigger project-item stagger-item" data-category="apartments" data-hover-label="OPEN" onclick="openProjectModal('modal-kronstadt')">
           <div class="project-preview-wrap">
             <img class="project-preview-img" src="4.jpg" alt="Апартаменты в Кронштадте" onerror="this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800'">
-            <div class="project-count-badge">Кейс • 14 ракурсов</div>
+            <div class="project-count-badge">Кейс • 4 фото</div>
           </div>
           <div class="project-card-content">
             <div>
@@ -972,7 +952,7 @@
 
     <div class="section-divider"></div>
 
-    <!-- МАТЕРИАЛЫ И ТАКТИЛЬНОСТЬ -->
+    <!-- МАТЕРИАЛЫ И ТАКТИЛЬНОСТЬ (БЕЗ ВСПЛЫВАЮЩЕЙ ГРАФИКИ НА ИКОНКАХ) -->
     <section id="materials" class="moodboard-section reveal">
       <div class="section-header">
         <span class="section-subtitle">Эстетика и детали</span>
@@ -988,16 +968,16 @@
       </div>
 
       <div class="moodboard-grid">
-        <div class="moodboard-card card-palette stagger-item"><img class="moodboard-img" src="oreh.jpg" alt="Шпон ореха"><div class="moodboard-info"><h4>Шпон американского ореха</h4><p>Глубокая натуральная текстура для панелей.</p></div></div>
-        <div class="moodboard-card card-palette stagger-item"><img class="moodboard-img" src="ohra.jpg" alt="Охра"><div class="moodboard-info"><h4>Терракота и охра</h4><p>Теплые природные пигменты.</p></div></div>
-        <div class="moodboard-card card-grid stagger-item"><img class="moodboard-img" src="steklo.jpg" alt="Стекло"><div class="moodboard-info"><h4>Рифленое стекло</h4><p>Полупрозрачные перегородки.</p></div></div>
-        <div class="moodboard-card card-lamp stagger-item"><img class="moodboard-img" src="latun.jpg" alt="Латунь"><div class="moodboard-info"><h4>Матовая латунь</h4><p>Благородные металлические акценты.</p></div></div>
-        <div class="moodboard-card card-grid stagger-item"><img class="moodboard-img" src="travertin.jpg" alt="Травертин"><div class="moodboard-info"><h4>Травертин и камень</h4><p>Элегантные каменные поверхности.</p></div></div>
-        <div class="moodboard-card card-lamp stagger-item"><img class="moodboard-img" src="svet.jpg" alt="Свет"><div class="moodboard-info"><h4>Световые сценарии</h4><p>Теплый рассеянный свет.</p></div></div>
+        <div class="moodboard-card stagger-item"><img class="moodboard-img" src="oreh.jpg" alt="Шпон ореха"><div class="moodboard-info"><h4>Шпон американского ореха</h4><p>Глубокая натуральная текстура для панелей.</p></div></div>
+        <div class="moodboard-card stagger-item"><img class="moodboard-img" src="ohra.jpg" alt="Охра"><div class="moodboard-info"><h4>Терракота и охра</h4><p>Теплые природные пигменты.</p></div></div>
+        <div class="moodboard-card stagger-item"><img class="moodboard-img" src="steklo.jpg" alt="Стекло"><div class="moodboard-info"><h4>Рифленое стекло</h4><p>Полупрозрачные перегородки.</p></div></div>
+        <div class="moodboard-card stagger-item"><img class="moodboard-img" src="latun.jpg" alt="Латунь"><div class="moodboard-info"><h4>Матовая латунь</h4><p>Благородные металлические акценты.</p></div></div>
+        <div class="moodboard-card stagger-item"><img class="moodboard-img" src="travertin.jpg" alt="Травертин"><div class="moodboard-info"><h4>Травертин и камень</h4><p>Элегантные каменные поверхности.</p></div></div>
+        <div class="moodboard-card stagger-item"><img class="moodboard-img" src="svet.jpg" alt="Свет"><div class="moodboard-info"><h4>Световые сценарии</h4><p>Теплый рассеянный свет.</p></div></div>
       </div>
     </section>
 
-    <!-- ЭТАПЫ РАБОТЫ (С ГРАФИЧЕСКИМИ ИКОНКАМИ ПРИ НАВЕДЕНИИ) -->
+    <!-- ЭТАПЫ РАБОТЫ (7 ПУНКТОВ, ВКЛЮЧАЯ СДАЧУ ПРОЕКТА 07) -->
     <section id="workflow" class="workflow-section reveal">
       <div class="section-header">
         <span class="section-subtitle">Прозрачный процесс</span>
@@ -1034,6 +1014,11 @@
           <div class="workflow-num">06</div>
           <h4>Авторский надзор</h4>
           <p>Регулярный выезд на объект, контроль соответствия работ чертежам и оперативные корректировки.</p>
+        </div>
+        <div class="workflow-card step-delivery stagger-item" style="border-color: var(--terracotta); background: #FFF;">
+          <div class="workflow-num">07</div>
+          <h4>Сдача готового проекта</h4>
+          <p>Передача полного альбома рабочей документации, 3D-визуализаций и спецификаций для запуска строительных работ.</p>
         </div>
       </div>
     </section>
@@ -1269,7 +1254,7 @@
     </div>
   </div>
 
-  <!-- МОДАЛЬНОЕ ОКНО ПРОЕКТА -->
+  <!-- МОДАЛЬНОЕ ОКНО ПРОЕКТА (4 ФОТО КРОНШТАДТ) -->
   <div id="modal-kronstadt" class="project-modal" onclick="closeOnOutside(event, this)">
     <div class="modal-dialog">
       <div class="modal-header-banner">
@@ -1279,10 +1264,10 @@
       </div>
       <div class="modal-body">
         <div class="modal-gallery-grid">
-          <div class="modal-photo-card full-width" onclick="openLightbox(this)"><img src="4.jpg"><div class="modal-photo-info"><span class="modal-photo-title">Гостиная</span></div></div>
-          <div class="modal-photo-card" onclick="openLightbox(this)"><img src="7.jpg"><div class="modal-photo-info"><span class="modal-photo-title">Столовая</span></div></div>
-          <div class="modal-photo-card" onclick="openLightbox(this)"><img src="8.jpg"><div class="modal-photo-info"><span class="modal-photo-title">Диванная зона</span></div></div>
-          <div class="modal-photo-card full-width" onclick="openLightbox(this)"><img src="6.jpg"><div class="modal-photo-info"><span class="modal-photo-title">Кухня</span></div></div>
+          <div class="modal-photo-card full-width" onclick="openLightbox(this)"><img src="4.jpg" alt="Гостиная"><div class="modal-photo-info"><span class="modal-photo-title">Гостиная</span><span class="modal-photo-zone">Обзор</span></div></div>
+          <div class="modal-photo-card" onclick="openLightbox(this)"><img src="7.jpg" alt="Столовая"><div class="modal-photo-info"><span class="modal-photo-title">Столовая зона</span><span class="modal-photo-zone">Столовая</span></div></div>
+          <div class="modal-photo-card" onclick="openLightbox(this)"><img src="8.jpg" alt="Диван"><div class="modal-photo-info"><span class="modal-photo-title">Диванная зона</span><span class="modal-photo-zone">Гостиная</span></div></div>
+          <div class="modal-photo-card full-width" onclick="openLightbox(this)"><img src="6.jpg" alt="Кухня"><div class="modal-photo-info"><span class="modal-photo-title">Кухня</span><span class="modal-photo-zone">Кухня</span></div></div>
         </div>
       </div>
     </div>
