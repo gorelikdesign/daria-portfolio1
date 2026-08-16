@@ -3,8 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Дарья Горелик | Студия дизайна интерьера</title>
   
+  <!-- SEO Метатеги для поисковых систем (Яндекс, Google) -->
+  <title>Дарья Горелик — Студия дизайна интерьера в Санкт-Петербурге и Кронштадте</title>
+  <meta name="description" content="Авторский дизайн интерьера от Дарьи Горелик под ключ. Планировочные решения, 3D-визуализации, рабочие чертежи и авторское сопровождение в СПб, Кронштадте и онлайн по РФ.">
+  <meta name="keywords" content="Дарья Горелик, дизайн интерьера, дизайнер интерьера СПб, дизайн интерьера Кронштадт, заказать дизайн проект, интерьер квартиры">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Дарья Горелик">
+
+  <!-- Open Graph для красивого превью в Telegram, VK и WhatsApp -->
+  <meta property="og:title" content="Дарья Горелик | Студия дизайна интерьера">
+  <meta property="og:description" content="Интерьеры со смыслом, характером и светом. Портфолио выполненных проектов и онлайн-калькулятор.">
+  <meta property="og:image" content="https://gorelikdesign.github.io/daria-portfolio1/4.jpg">
+  <meta property="og:url" content="https://gorelikdesign.github.io/daria-portfolio1/">
+  <meta property="og:type" content="website">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -577,6 +590,7 @@
       letter-spacing: 1px;
     }
 
+    /* КАЛЬКУЛЯТОР */
     .calculator-wrapper {
       background: var(--sand-card);
       border: 1px solid var(--border-color);
@@ -745,6 +759,7 @@
       padding-bottom: 18px;
     }
 
+    /* БЛОК О ДИЗАЙНЕРЕ */
     .about-bio-banner {
       background: var(--sand-card);
       border: 1.5px solid var(--border-color);
@@ -821,6 +836,7 @@
       line-height: 1.6;
     }
 
+    /* КОНТАКТЫ */
     .contact-wrapper {
       background: var(--sand-accent);
       border-radius: 18px;
@@ -940,6 +956,7 @@
       gap: 8px;
     }
 
+    /* МОДАЛЬНОЕ ОКНО */
     .project-modal {
       display: none;
       position: fixed;
@@ -1207,6 +1224,7 @@
 
   <div class="container">
     
+    <!-- ШАПКА С АРХИТЕКТУРНОЙ МОНОГРАММОЙ DG -->
     <header>
       <a href="#" class="brand-logo">
         <svg class="logo-emblem-svg" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1508,7 +1526,7 @@
 
   </div>
 
-  <!-- МОДАЛЬНОЕ ОКНО С ГАЛЕРЕЕЙ -->
+  <!-- МОДАЛЬНОЕ ОКНО: ТОЛЬКО 11 УНИКАЛЬНЫХ РАКУРСОВ -->
   <div id="modal-kronstadt" class="project-modal" onclick="closeOnOutside(event, this)">
     <div class="modal-dialog">
       <div class="modal-header-banner">
@@ -1523,7 +1541,7 @@
           
           <!-- 1. 4.jpg -->
           <div class="modal-photo-card full-width" onclick="openLightbox(this)">
-            <img src="4.jpg" alt="Гостиная" loading="lazy" decoding="async">
+            <img src="4.jpg" alt="Гостиная: флористическое панно" loading="lazy" decoding="async">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Гостиная: флористическое панно</span>
               <span class="modal-photo-zone">Гостиная</span>
@@ -1532,7 +1550,7 @@
 
           <!-- 2. 7.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="7.jpg" alt="Столовая" loading="lazy" decoding="async">
+            <img src="7.jpg" alt="Обеденная зона и витраж" loading="lazy" decoding="async">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Обеденная зона и витраж</span>
               <span class="modal-photo-zone">Столовая</span>
@@ -1541,7 +1559,7 @@
 
           <!-- 3. 8.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="8.jpg" alt="Диван" loading="lazy" decoding="async">
+            <img src="8.jpg" alt="Терракотовый диван и ковер" loading="lazy" decoding="async">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Терракотовый диван и ковер</span>
               <span class="modal-photo-zone">Гостиная</span>
@@ -1550,7 +1568,7 @@
 
           <!-- 4. 6.jpg -->
           <div class="modal-photo-card full-width" onclick="openLightbox(this)">
-            <img src="6.jpg" alt="Кухня" loading="lazy" decoding="async">
+            <img src="6.jpg" alt="Кухня: орех и рифленое стекло" loading="lazy" decoding="async">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Кухня: орех и рифленое стекло</span>
               <span class="modal-photo-zone">Кухня</span>
@@ -1559,7 +1577,7 @@
 
           <!-- 5. krovat.jpg -->
           <div class="modal-photo-card full-width" onclick="openLightbox(this)">
-            <img src="krovat.jpg" alt="Спальня" loading="lazy" decoding="async">
+            <img src="krovat.jpg" alt="Спальня: изумруд и хрусталь" loading="lazy" decoding="async">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Спальня: изумруд и хрусталь</span>
               <span class="modal-photo-zone">Спальня</span>
@@ -1568,7 +1586,7 @@
 
           <!-- 6. ugol.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="ugol.jpg" alt="Угол комнаты" loading="lazy" decoding="async">
+            <img src="ugol.jpg" alt="Угловая перспектива спальни" loading="lazy" decoding="async">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Угловая перспектива спальни</span>
               <span class="modal-photo-zone">Спальня</span>
@@ -1577,7 +1595,7 @@
 
           <!-- 7. tv.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="tv.jpg" alt="Медиазона" loading="lazy" decoding="async">
+            <img src="tv.jpg" alt="Медиазона с подсветкой" loading="lazy" decoding="async">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Медиазона с подсветкой</span>
               <span class="modal-photo-zone">Спальня</span>
@@ -1586,7 +1604,7 @@
 
           <!-- 8. stena.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="stena.jpg" alt="Скрытая дверь" loading="lazy" decoding="async">
+            <img src="stena.jpg" alt="Скрытая дверь в гардеробную" loading="lazy" decoding="async">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Скрытая дверь в гардеробную</span>
               <span class="modal-photo-zone">Спальня</span>
@@ -1595,14 +1613,14 @@
 
           <!-- 9. tumba.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="tumba.jpg" alt="Прикроватная тумба" loading="lazy" decoding="async">
+            <img src="tumba.jpg" alt="Прикроватная зона и шпон" loading="lazy" decoding="async">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Прикроватная зона и шпон</span>
               <span class="modal-photo-zone">Детали</span>
             </div>
           </div>
 
-          <!-- 10. console 1.jpg (ИСПРАВЛЕНО) -->
+          <!-- 10. console 1.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
             <img src="console%201.jpg" alt="Туалетный столик с зеркалом" loading="lazy" decoding="async">
             <div class="modal-photo-info">
@@ -1613,7 +1631,7 @@
 
           <!-- 11. console close.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="console%20close.jpg" alt="Консоль близко" loading="lazy" decoding="async">
+            <img src="console%20close.jpg" alt="Текстуры обоев и бра" loading="lazy" decoding="async">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Текстуры обоев и бра</span>
               <span class="modal-photo-zone">Консоль</span>
@@ -1622,7 +1640,7 @@
 
           <!-- 12. garderob 1.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="garderob%201.jpg" alt="Вход в гардеробную" loading="lazy" decoding="async">
+            <img src="garderob%201.jpg" alt="Перспектива гардеробной" loading="lazy" decoding="async">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Перспектива гардеробной</span>
               <span class="modal-photo-zone">Гардероб</span>
@@ -1631,7 +1649,7 @@
 
           <!-- 13. garderob 3.jpg -->
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="garderob%203.jpg" alt="Стеллажи гардероба" loading="lazy" decoding="async">
+            <img src="garderob%203.jpg" alt="Стеллажи для аксессуаров" loading="lazy" decoding="async">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Стеллажи для аксессуаров</span>
               <span class="modal-photo-zone">Гардероб</span>
@@ -1640,7 +1658,7 @@
 
           <!-- 14. garderob 4.jpg -->
           <div class="modal-photo-card full-width" onclick="openLightbox(this)">
-            <img src="garderob%204.jpg" alt="Гардеробная система" loading="lazy" decoding="async">
+            <img src="garderob%204.jpg" alt="Система вешал со встроенным светом" loading="lazy" decoding="async">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Система вешал со встроенным светом</span>
               <span class="modal-photo-zone">Гардероб</span>
