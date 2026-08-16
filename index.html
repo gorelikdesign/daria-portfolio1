@@ -85,6 +85,19 @@
       transition: width 0.1s ease-out;
     }
 
+    /* Анимации появления при скролле */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     @media (hover: hover) and (pointer: fine) {
       .custom-cursor {
         position: fixed;
@@ -205,14 +218,14 @@
 
     nav.nav-desktop {
       display: flex;
-      gap: 24px;
+      gap: 22px;
       align-items: center;
     }
 
     nav.nav-desktop a {
       text-decoration: none;
       color: var(--text-dark);
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 500;
       letter-spacing: 0.5px;
       transition: color 0.2s;
@@ -266,7 +279,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 22px;
+      gap: 20px;
       opacity: 0;
       pointer-events: none;
       transform: translateY(-20px);
@@ -281,7 +294,7 @@
 
     .mobile-menu-overlay a {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
+      font-size: 1.45rem;
       text-decoration: none;
       color: var(--text-dark);
       font-weight: 600;
@@ -445,7 +458,7 @@
     .section-header {
       text-align: center;
       max-width: 700px;
-      margin: 0 auto 45px auto;
+      margin: 0 auto 40px auto;
     }
 
     .section-subtitle {
@@ -478,6 +491,33 @@
       background: var(--olive-main);
     }
 
+    /* ФИЛЬТРАЦИЯ ПРОЕКТОВ */
+    .portfolio-filters {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 35px;
+    }
+
+    .filter-btn {
+      background: var(--sand-card);
+      border: 1.5px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 8px 18px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--olive-deep);
+      color: #FFF;
+      border-color: var(--olive-deep);
+    }
+
     /* ПРОЕКТЫ */
     .projects-container {
       display: grid;
@@ -492,10 +532,14 @@
       overflow: hidden;
       cursor: pointer;
       text-align: left;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
       box-shadow: 0 10px 25px rgba(0,0,0,0.04);
       display: flex;
       flex-direction: column;
+    }
+
+    .project-card-btn.hide-project {
+      display: none;
     }
 
     .project-card-btn:hover {
@@ -608,7 +652,58 @@
       letter-spacing: 1px;
     }
 
-    /* БЛОК СХЕМЫ РАЗРАБОТКИ ДИЗАЙН-ПРОЕКТА */
+    /* БЛОК МАТЕРИАЛОВ И ФАКТУР (MOODBOARD) */
+    .moodboard-section {
+      background: var(--sand-accent);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .moodboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .moodboard-card {
+      background: var(--sand-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease;
+    }
+
+    .moodboard-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .moodboard-img {
+      height: 180px;
+      width: 100%;
+      object-fit: cover;
+      background: #E2DBD0;
+    }
+
+    .moodboard-info {
+      padding: 16px 18px;
+    }
+
+    .moodboard-info h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.08rem;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .moodboard-info p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* БЛОК СХЕМЫ РАЗРАБОТКИ */
     .workflow-section {
       background: var(--sand-card);
       border-top: 1px solid var(--border-color);
@@ -619,7 +714,6 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 24px;
-      position: relative;
     }
 
     .workflow-card {
@@ -629,7 +723,6 @@
       padding: 28px 22px;
       display: flex;
       flex-direction: column;
-      position: relative;
       transition: transform 0.25s ease, border-color 0.25s ease;
     }
 
@@ -661,7 +754,7 @@
       line-height: 1.55;
     }
 
-    /* БЛОК ОТЗЫВОВ КЛИЕНТОВ */
+    /* ОТЗЫВЫ */
     .reviews-section {
       background: var(--sand-bg);
     }
@@ -680,7 +773,6 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      position: relative;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
@@ -704,7 +796,6 @@
       line-height: 1.65;
       margin-bottom: 22px;
       font-style: italic;
-      position: relative;
     }
 
     .review-author-wrap {
@@ -1077,11 +1168,6 @@
       color: #FFF;
     }
 
-    .tariff-modal-card.highlight .btn-tariff-select:hover {
-      background: var(--terracotta-dark);
-      border-color: var(--terracotta-dark);
-    }
-
     .btn-close-tariff {
       position: absolute;
       top: 20px;
@@ -1097,11 +1183,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.2s;
-    }
-
-    .btn-close-tariff:hover {
-      background: rgba(255,255,255,0.3);
     }
 
     /* FAQ */
@@ -1532,6 +1613,32 @@
       font-weight: 600;
     }
 
+    /* Кнопка быстрого действия внутри модального окна */
+    .modal-action-footer {
+      margin-top: 35px;
+      padding: 25px 20px;
+      background: var(--sand-accent);
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .modal-action-footer h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--text-dark);
+    }
+
+    .modal-action-footer p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      max-width: 500px;
+    }
+
     .lightbox {
       display: none;
       position: fixed;
@@ -1699,6 +1806,7 @@
   <div class="mobile-menu-overlay" id="mobile-menu">
     <a href="#about" onclick="toggleMobileMenu()">О дизайнере</a>
     <a href="#projects" onclick="toggleMobileMenu()">Проекты</a>
+    <a href="#materials" onclick="toggleMobileMenu()">Материалы</a>
     <a href="#workflow" onclick="toggleMobileMenu()">Этапы работы</a>
     <a href="#reviews" onclick="toggleMobileMenu()">Отзывы</a>
     <a href="#calc" onclick="toggleMobileMenu()">Калькулятор</a>
@@ -1727,6 +1835,7 @@
       <nav class="nav-desktop">
         <a href="#about">О дизайнере</a>
         <a href="#projects">Проекты</a>
+        <a href="#materials">Материалы</a>
         <a href="#workflow">Этапы работы</a>
         <a href="#reviews">Отзывы</a>
         <a href="#calc">Калькулятор</a>
@@ -1742,7 +1851,7 @@
     </header>
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero reveal">
       <div class="hero-text">
         <div class="hero-badge">Студия дизайна интерьера • Опыт 1 год</div>
         <h1 class="hero-title">Интерьеры со смыслом, характером и светом</h1>
@@ -1763,17 +1872,24 @@
       </div>
     </section>
 
-    <!-- ПОРТФОЛИО -->
-    <section id="projects">
+    <!-- ПОРТФОЛИО С ФИЛЬТРАЦИЕЙ ПО КАТЕГОРИЯМ -->
+    <section id="projects" class="reveal">
       <div class="section-header">
         <span class="section-subtitle">Портфолио</span>
         <h2 class="section-title">Выполненные проекты</h2>
       </div>
 
+      <!-- Кнопки фильтрации -->
+      <div class="portfolio-filters">
+        <button class="filter-btn active" onclick="filterProjects('all', this)">Все проекты</button>
+        <button class="filter-btn" onclick="filterProjects('apartments', this)">Городские квартиры</button>
+        <button class="filter-btn" onclick="filterProjects('inprogress', this)">В реализации</button>
+      </div>
+
       <div class="projects-container">
         
         <!-- КЕЙС: Кронштадт -->
-        <div class="project-card-btn hover-trigger" data-hover-label="OPEN" onclick="openProjectModal('modal-kronstadt')">
+        <div class="project-card-btn hover-trigger project-item" data-category="apartments" data-hover-label="OPEN" onclick="openProjectModal('modal-kronstadt')">
           <div class="project-preview-wrap">
             <img class="project-preview-img" src="4.jpg" alt="Апартаменты в Кронштадте" onerror="this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800'">
             <div class="project-count-badge">Кейс • 11 ракурсов</div>
@@ -1812,7 +1928,7 @@
         </div>
 
         <!-- КАРТОЧКА: Проект в реализации -->
-        <div class="project-card-btn" style="background: var(--sand-accent); border-style: dashed; justify-content: center; align-items: center; text-align: center; padding: 35px 25px;">
+        <div class="project-card-btn project-item" data-category="inprogress" style="background: var(--sand-accent); border-style: dashed; justify-content: center; align-items: center; text-align: center; padding: 35px 25px;">
           <div style="font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--olive-light); margin-bottom: 10px;">DG</div>
           <h3 style="font-family: 'Playfair Display', serif; font-size: 1.45rem; color: var(--text-dark); margin-bottom: 8px;">Проект в реализации</h3>
           <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px; max-width: 320px;">Видовая квартира в Санкт-Петербурге. Ведутся отделочные работы и заказ мебели.</p>
@@ -1822,8 +1938,52 @@
       </div>
     </section>
 
+    <!-- БЛОК МАТЕРИАЛОВ И ФАКТУР (MOODBOARD) -->
+    <section id="materials" class="moodboard-section reveal">
+      <div class="section-header">
+        <span class="section-subtitle">Эстетика и детали</span>
+        <h2 class="section-title">Материалы и тактильность</h2>
+      </div>
+
+      <div class="moodboard-grid">
+        
+        <div class="moodboard-card">
+          <img class="moodboard-img" src="https://images.unsplash.com/photo-1546484396-fb3fc6f95f98?auto=format&fit=crop&w=600&q=80" alt="Шпон американского ореха">
+          <div class="moodboard-info">
+            <h4>Шпон ореха</h4>
+            <p>Глубокая натуральная текстура для стеновых панелей и парящих консолей.</p>
+          </div>
+        </div>
+
+        <div class="moodboard-card">
+          <img class="moodboard-img" src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=600&q=80" alt="Терракота и глина">
+          <div class="moodboard-info">
+            <h4>Терракота и охра</h4>
+            <p>Теплые природные пигменты, создающие ощущение уюта и камерности.</p>
+          </div>
+        </div>
+
+        <div class="moodboard-card">
+          <img class="moodboard-img" src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=600&q=80" alt="Рифленое стекло">
+          <div class="moodboard-info">
+            <h4>Рифленое стекло</h4>
+            <p>Легкие перегородки, мягко рассеивающие дневной и вечерний свет.</p>
+          </div>
+        </div>
+
+        <div class="moodboard-card">
+          <img class="moodboard-img" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80" alt="Текстиль и латунь">
+          <div class="moodboard-info">
+            <h4>Букле и матовая латунь</h4>
+            <p>Тактильные ткани и благородные металлические акценты в фурнитуре.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- СХЕМА РАЗРАБОТКИ ДИЗАЙН-ПРОЕКТА -->
-    <section id="workflow" class="workflow-section">
+    <section id="workflow" class="workflow-section reveal">
       <div class="section-header">
         <span class="section-subtitle">Прозрачный процесс</span>
         <h2 class="section-title">Схема разработки дизайн-проекта</h2>
@@ -1877,7 +2037,7 @@
     </section>
 
     <!-- ОТЗЫВЫ КЛИЕНТОВ -->
-    <section id="reviews" class="reviews-section">
+    <section id="reviews" class="reviews-section reveal">
       <div class="section-header">
         <span class="section-subtitle">Доверие заказчиков</span>
         <h2 class="section-title">Отзывы о работе</h2>
@@ -1931,7 +2091,7 @@
     </section>
 
     <!-- КАЛЬКУЛЯТОР -->
-    <section id="calc">
+    <section id="calc" class="reveal">
       <div class="section-header">
         <span class="section-subtitle">Калькулятор</span>
         <h2 class="section-title">Ориентировочный расчет</h2>
@@ -1997,7 +2157,7 @@
     </section>
 
     <!-- О ДИЗАЙНЕРЕ -->
-    <section id="about">
+    <section id="about" class="reveal">
       <div class="section-header">
         <span class="section-subtitle">Об авторе</span>
         <h2 class="section-title">Образование и подход к дизайну</h2>
@@ -2021,7 +2181,7 @@
         </div>
       </div>
 
-      <!-- КАРТОЧКИ ПОДХОДА С ВЕКТОРНЫМИ ЗНАЧКАМИ -->
+      <!-- КАРТОЧКИ ПОДХОДА -->
       <div class="about-grid">
         
         <div class="about-card">
@@ -2058,7 +2218,7 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq">
+    <section id="faq" class="reveal">
       <div class="section-header">
         <span class="section-subtitle">Ответы на вопросы</span>
         <h2 class="section-title">Часто задаваемые вопросы</h2>
@@ -2097,8 +2257,8 @@
       </div>
     </section>
 
-    <!-- КОНТАКТЫ И ИНФОРМАТИВНАЯ АНКЕТА -->
-    <section id="contacts">
+    <!-- КОНТАКТЫ И АНКЕТА -->
+    <section id="contacts" class="reveal">
       <div class="contact-wrapper">
         <div class="contact-info">
           <h3>Создадим интерьер вашей мечты?</h3>
@@ -2193,7 +2353,7 @@
           <div class="form-grid-2">
             <div class="form-group">
               <label>Желаемый стиль</label>
-              <select class="form-select">
+              <select class="form-select" id="form-style-select">
                 <option value="contemporary">Современный / Contemporary</option>
                 <option value="minimalism">Теплый минимализм</option>
                 <option value="neoclassic">Неоклассика / Элементы классики</option>
@@ -2209,7 +2369,7 @@
 
           <div class="form-group">
             <label>Дополнительные пожелания и задачи</label>
-            <textarea class="form-textarea" rows="3" placeholder="Состав семьи, наличие питомцев, необходимость гардеробной, рабочего кабинета или перепланировки"></textarea>
+            <textarea class="form-textarea" id="form-comments" rows="3" placeholder="Состав семьи, наличие питомцев, необходимость гардеробной, рабочего кабинета или перепланировки"></textarea>
           </div>
 
           <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 5px;">Получить консультацию и расчет</button>
@@ -2446,6 +2606,14 @@
           </div>
 
         </div>
+
+        <!-- Быстрая кнопка действия (Пункт 6) -->
+        <div class="modal-action-footer">
+          <h4>Понравилось решение в этом проекте?</h4>
+          <p>Разработаем индивидуальную планировку и концепцию с учетом параметров вашей квартиры.</p>
+          <button class="btn btn-primary" onclick="orderSimilarProject('Contemporary Eclectic (по мотивам проекта в Кронштадте)')">Хочу проект в таком стиле →</button>
+        </div>
+
       </div>
     </div>
   </div>
@@ -2469,7 +2637,7 @@
       }
     });
 
-    // Закрытие всех модальных окон по нажатию клавиши Escape
+    // Закрытие всех модальных окон по Escape
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeTariffModal();
@@ -2478,6 +2646,54 @@
         if (lb) lb.style.display = 'none';
       }
     });
+
+    // Scroll Reveal анимации
+    const revealCallback = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    };
+
+    const revealObserver = new IntersectionObserver(revealCallback, {
+      root: null,
+      threshold: 0.12
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Фильтрация проектов
+    function filterProjects(category, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const items = document.querySelectorAll('.project-item');
+      items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+          item.classList.remove('hide-project');
+        } else {
+          item.classList.add('hide-project');
+        }
+      });
+    }
+
+    // Быстрое действие из модалки проекта в форму
+    function orderSimilarProject(styleName) {
+      closeProjectModal('modal-kronstadt');
+      const styleSelect = document.getElementById('form-style-select');
+      const commentsInput = document.getElementById('form-comments');
+      
+      if (styleSelect) styleSelect.value = 'contemporary';
+      if (commentsInput) {
+        commentsInput.value = 'Интересует проект в стиле: ' + styleName;
+      }
+
+      const contactsSection = document.getElementById('contacts');
+      if (contactsSection) {
+        contactsSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
 
     function toggleMobileMenu() {
       const menu = document.getElementById('mobile-menu');
