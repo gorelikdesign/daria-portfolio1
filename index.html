@@ -1957,7 +1957,46 @@
         text-align: center;
         flex-direction: column;
         gap: 8px;
+      }/* Улучшенная интерактивность карточек материалов */
+      .moodboard-card {
+        background: var(--sand-card);
+        border: 1.5px solid var(--border-color);
+        border-radius: 16px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.4s ease, box-shadow 0.4s ease !important;
       }
+
+     .moodboard-card:hover {
+       transform: scale(1.03);
+       box-shadow: 0 20px 40px rgba(62, 75, 49, 0.15);
+     }
+
+    .moodboard-img {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.7) brightness(0.95);
+      transition: filter 0.5s ease !important;
+    }
+
+    .moodboard-card:hover .moodboard-img {
+      filter: saturate(1.2) brightness(1.05);
+    }
+
+    /* Интерактивность иконок в карточках */
+    .about-card:hover .about-card-icon {
+      background: var(--terracotta);
+      color: #FFF;
+      transform: rotate(10deg) scale(1.1);
+    }
+    
+    .workflow-card:hover .workflow-num {
+      transform: scale(1.1);
+      color: var(--olive-deep);
+    }
     }
   </style>
 </head>
