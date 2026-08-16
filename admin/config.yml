@@ -1,0 +1,43 @@
+backend:
+  name: git-gateway
+  branch: main # ветка в вашем репозитории
+
+media_folder: "uploads" # куда сохранять загружаемые картинки
+public_folder: "/uploads"
+
+collections:
+  # 1. Управление выполненными проектами
+  - name: "projects"
+    label: "Выполненные проекты"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Название проекта", name: "title", widget: "string" }
+      - { label: "Локация", name: "location", widget: "string", default: "г. Кронштадт" }
+      - { label: "Стиль", name: "style", widget: "string", default: "Contemporary Eclectic" }
+      - { label: "Срок разработки", name: "term", widget: "string", default: "1.5 месяца" }
+      - { label: "Краткое описание", name: "description", widget: "text" }
+      - { label: "Главное превью (обложка)", name: "thumbnail", widget: "image" }
+      - label: "Фотографии проекта (галерея)"
+        name: "gallery"
+        widget: "list"
+        fields:
+          - { label: "Изображение", name: "image", widget: "image" }
+          - { label: "Название ракурса", name: "caption", widget: "string" }
+          - { label: "Зона (Гостиная, Спальня, Кухня и т.д.)", name: "zone", widget: "string" }
+
+  # 2. Управление контактами и ценами
+  - name: "settings"
+    label: "Настройки сайта и контакты"
+    files:
+      - file: "content/settings.json"
+        label: "Контакты и цены"
+        name: "settings"
+        fields:
+          - { label: "Телефон", name: "phone", widget: "string", default: "+7 (962) 726-88-47" }
+          - { label: "Telegram ссылка", name: "telegram", widget: "string" }
+          - { label: "WhatsApp ссылка", name: "whatsapp", widget: "string" }
+          - { label: "Instagram ссылка", name: "instagram", widget: "string" }
+          - { label: "VK ссылка", name: "vk", widget: "string" }
+          - { label: "Цена за полный проект (₽/м²)", name: "price_full", widget: "number", default: 4500 }
