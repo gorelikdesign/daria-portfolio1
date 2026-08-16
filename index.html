@@ -1420,9 +1420,14 @@
 
     .faq-item {
       background: var(--sand-card);
-      border: 1px solid var(--border-color);
+      border: 1.5px solid var(--border-color);
       border-radius: 12px;
       overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .faq-item:hover {
+      border-color: var(--olive-light);
     }
 
     .faq-question {
@@ -1684,6 +1689,7 @@
       padding: 30px 25px;
     }
 
+    /* АСИММЕТРИЧНАЯ ЖУРНАЛЬНАЯ СЕТКА МОДАЛКИ */
     .modal-gallery-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -1709,10 +1715,14 @@
 
     .modal-photo-card img {
       width: 100%;
-      height: 360px;
+      height: 380px;
       object-fit: cover;
       display: block;
       background: #eee;
+    }
+
+    .modal-photo-card.full-width img {
+      height: 440px;
     }
 
     .modal-photo-info {
@@ -1814,6 +1824,15 @@
       .form-grid-2 {
         grid-template-columns: 1fr;
       }
+      .modal-gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .modal-photo-card.full-width {
+        grid-column: span 1;
+      }
+      .modal-photo-card.full-width img, .modal-photo-card img {
+        height: 260px;
+      }
     }
 
     @media (max-width: 900px) {
@@ -1879,19 +1898,6 @@
 
       .tariff-selector {
         grid-template-columns: 1fr;
-      }
-
-      .modal-gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-      }
-
-      .modal-photo-card.full-width {
-        grid-column: span 1;
-      }
-
-      .modal-photo-card img {
-        height: 240px;
       }
 
       .project-modal {
@@ -1998,7 +2004,7 @@
     <!-- АВТОРСКИЙ МАНИФЕСТ -->
     <div class="manifesto-section reveal">
       <div class="manifesto-box">
-        <p>«Дизайн — это не просто расстановка мебели. Это создание пространства, в котором вам хочется дышать, творить и чувствовать себя дома». Д. Горелик</p>
+        <p>«Дизайн — это не просто расстановка мебели. Это создание пространства, в котором вам хочется дышать, творить и чувствовать себя дома»</p>
       </div>
     </div>
 
@@ -2323,7 +2329,7 @@
       </div>
     </section>
 
-    <!-- ОТЗЫВЫ КЛИЕНТОВ -->
+    <!-- ОТЗЫВЫ КЛИЕНТОВ (РАСПОЛОЖЕНЫ НАД FAQ) -->
     <section id="reviews" class="reviews-section reveal">
       <div class="section-header">
         <span class="section-subtitle">Доверие заказчиков</span>
