@@ -163,7 +163,7 @@
       position: relative;
     }
 
-    /* Архитектурные разделительные линии между секциями */
+    /* Архитектурные разделительные линии с декором */
     .section-divider {
       width: 100%;
       height: 1px;
@@ -172,16 +172,16 @@
     }
 
     .section-divider::after {
-      content: '✦';
+      content: '✦  ·  ✦';
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       background: var(--sand-bg);
-      padding: 0 15px;
-      font-size: 0.65rem;
-      color: var(--olive-main);
-      letter-spacing: 4px;
+      padding: 0 16px;
+      font-size: 0.55rem;
+      color: var(--terracotta);
+      letter-spacing: 6px;
     }
 
     header {
@@ -327,7 +327,7 @@
       color: var(--terracotta);
     }
 
-    /* HERO */
+    /* HERO с декоративными уголками */
     .hero {
       margin: 20px 20px 0 20px;
       background-color: var(--olive-deep);
@@ -339,6 +339,27 @@
       justify-content: space-between;
       gap: 40px;
       position: relative;
+      overflow: hidden;
+    }
+
+    /* Декоративные чертежные уголки на Hero */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 15px; left: 15px;
+      width: 30px; height: 30px;
+      border-top: 1px solid rgba(255,255,255,0.25);
+      border-left: 1px solid rgba(255,255,255,0.25);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 15px; right: 15px;
+      width: 30px; height: 30px;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      border-right: 1px solid rgba(255,255,255,0.25);
+      pointer-events: none;
     }
 
     .hero-text {
@@ -589,7 +610,7 @@
       border-color: var(--olive-deep);
     }
 
-    /* ПРОЕКТЫ С КИНЕМАТОГРАФИЧНЫМ ЭФФЕКТОМ */
+    /* ПРОЕКТЫ С КИНЕМАТОГРАФИЧНЫМ ЭФФЕКТОМ И УГОЛКАМИ */
     .projects-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -607,6 +628,23 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.04);
       display: flex;
       flex-direction: column;
+      position: relative;
+    }
+
+    /* Декоративные уголки на карточках проектов */
+    .project-card-btn::before {
+      content: '';
+      position: absolute;
+      top: 10px; right: 10px;
+      width: 14px; height: 14px;
+      border-top: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      z-index: 10;
+      pointer-events: none;
+      transition: border-color 0.3s;
+    }
+    .project-card-btn:hover::before {
+      border-color: var(--terracotta);
     }
 
     .project-card-btn.hide-project {
@@ -642,7 +680,7 @@
     .project-count-badge {
       position: absolute;
       top: 14px;
-      right: 14px;
+      left: 14px;
       background: rgba(42, 37, 34, 0.85);
       backdrop-filter: blur(6px);
       color: #FFF;
@@ -740,6 +778,7 @@
       border: 1.5px solid var(--border-color);
       border-radius: 18px;
       padding: 30px 32px;
+      position: relative;
     }
 
     .moodboard-intro h3 {
@@ -882,6 +921,7 @@
       border: 1px solid var(--border-color);
       border-radius: 18px;
       padding: 40px;
+      position: relative;
     }
 
     .calc-grid {
@@ -2702,7 +2742,7 @@
           </div>
 
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="ghl.jpg" alt="Угловая перспектива спальни" loading="lazy" decoding="async">
+            <img src="ugol.jpg" alt="Угловая перспектива спальни" loading="lazy" decoding="async">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Угловая перспектива спальни</span>
               <span class="modal-photo-zone">Спальня</span>
@@ -2761,7 +2801,7 @@
             <img src="garderob%203.jpg" alt="Стеллажи для аксессуаров" loading="lazy" decoding="async">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Стеллажи для аксессуаров</span>
-              <span class="modal-photo-zone">Гардероб</span>0
+              <span class="modal-photo-zone">Гардероб</span>
             </div>
           </div>
 
@@ -2952,24 +2992,39 @@
       calculateProject();
     }
 
+    let currentArea = 65;
+    let currentTariffPrice = 1500;
+    let currentTariffTerm = "6-8 недель";
+
     function calculateProject() {
-      const area = document.getElementById('area-range').value;
-      document.getElementById('area-val').innerText = area + ' м²';
-      const total = area * currentRate;
-      document.getElementById('total-price').innerText = total.toLocaleString('ru-RU') + ' ₽';
-      document.getElementById('project-term').innerText = 'Срок: ~' + currentTerm;
+      const areaInput = document.getElementById('area-range');
+      if (!areaInput) return;
+      currentArea = parseInt(areaInput.value);
+      const areaValEl = document.getElementById('area-val');
+      if (areaValEl) areaValEl.innerText = currentArea + ' м²';
+      
+      const totalPrice = currentArea * currentTariffPrice;
+      const totalPriceEl = document.getElementById('total-price');
+      if (totalPriceEl) totalPriceEl.innerText = totalPrice.toLocaleString('ru-RU') + ' ₽';
+      
+      const projectTermEl = document.getElementById('project-term');
+      if (projectTermEl) projectTermEl.innerText = 'Срок: ~' + currentTariffTerm;
     }
 
     function openTariffModal() {
       const modal = document.getElementById('modal-tariffs');
-      modal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
+      if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
     }
 
     function closeTariffModal() {
       const modal = document.getElementById('modal-tariffs');
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto';
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
     }
 
     function selectTariffFromModal(type, rate, term) {
