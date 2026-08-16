@@ -46,7 +46,6 @@
       overflow-x: hidden;
     }
 
-    /* Индикатор скролла */
     #scroll-progress {
       position: fixed;
       top: 0; left: 0;
@@ -57,7 +56,6 @@
       transition: width 0.1s ease-out;
     }
 
-    /* Курсор только для десктопов */
     @media (hover: hover) and (pointer: fine) {
       .custom-cursor {
         position: fixed;
@@ -123,7 +121,6 @@
       position: relative;
     }
 
-    /* Навигация */
     header {
       padding: 18px 40px;
       display: flex;
@@ -201,7 +198,6 @@
       color: var(--terracotta);
     }
 
-    /* Мобильный бургер */
     .burger-btn {
       display: none;
       flex-direction: column;
@@ -272,7 +268,6 @@
       color: var(--terracotta);
     }
 
-    /* Hero */
     .hero {
       margin: 20px 20px 0 20px;
       background-color: var(--olive-deep);
@@ -418,7 +413,6 @@
       color: var(--text-muted);
     }
 
-    /* Секции */
     section {
       padding: 70px 40px;
     }
@@ -459,7 +453,6 @@
       background: var(--olive-main);
     }
 
-    /* ПРОЕКТЫ */
     .projects-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -703,7 +696,6 @@
       margin-bottom: 20px;
     }
 
-    /* FAQ */
     .faq-list {
       max-width: 800px;
       margin: 0 auto;
@@ -759,7 +751,6 @@
       padding-bottom: 18px;
     }
 
-    /* О дизайнере */
     .about-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -793,7 +784,6 @@
       line-height: 1.6;
     }
 
-    /* Контакты */
     .contact-wrapper {
       background: var(--sand-accent);
       border-radius: 18px;
@@ -894,7 +884,6 @@
       border-color: var(--olive-main);
     }
 
-    /* Плавающая кнопка для телефонов */
     .fab-contact {
       position: fixed;
       bottom: max(20px, env(safe-area-inset-bottom));
@@ -914,7 +903,6 @@
       gap: 8px;
     }
 
-    /* Модальное окно */
     .project-modal {
       display: none;
       position: fixed;
@@ -1024,7 +1012,6 @@
       font-weight: 600;
     }
 
-    /* Лайтбокс */
     .lightbox {
       display: none;
       position: fixed;
@@ -1058,7 +1045,6 @@
       gap: 10px;
     }
 
-    /* АДАПТИВНОСТЬ ПОД МОБИЛЬНЫЕ УСТРОЙСТВА */
     @media (max-width: 900px) {
       body {
         padding: 10px 6px;
@@ -1160,19 +1146,15 @@
 </head>
 <body>
 
-  <!-- Скролл-индикатор -->
   <div id="scroll-progress"></div>
 
-  <!-- Кастомный курсор (для ПК) -->
   <div class="custom-cursor" id="cursor"></div>
   <div class="cursor-follower" id="cursor-follower"></div>
 
-  <!-- Плавающая кнопка для быстрой связи -->
   <a href="https://t.me/+79627268847" target="_blank" class="fab-contact">
     <span>💬 Написать</span>
   </a>
 
-  <!-- Мобильное меню -->
   <div class="mobile-menu-overlay" id="mobile-menu">
     <a href="#about" onclick="toggleMobileMenu()">О дизайнере</a>
     <a href="#projects" onclick="toggleMobileMenu()">Проекты</a>
@@ -1183,7 +1165,6 @@
 
   <div class="container">
     
-    <!-- Шапка -->
     <header>
       <a href="#" class="brand-logo">
         <div class="logo-emblem">DG</div>
@@ -1193,7 +1174,6 @@
         </div>
       </a>
 
-      <!-- Меню для ПК -->
       <nav class="nav-desktop">
         <a href="#about">О дизайнере</a>
         <a href="#projects">Проекты</a>
@@ -1202,7 +1182,6 @@
         <a href="#contacts">Контакты</a>
       </nav>
 
-      <!-- Бургер-кнопка для мобильных -->
       <button class="burger-btn" id="burger-toggle" onclick="toggleMobileMenu()" aria-label="Открыть меню">
         <span></span>
         <span></span>
@@ -1210,7 +1189,6 @@
       </button>
     </header>
 
-    <!-- Hero -->
     <section class="hero">
       <div class="hero-text">
         <div class="hero-badge">Студия дизайна интерьера</div>
@@ -1223,7 +1201,7 @@
       </div>
       <div class="hero-photo-wrap">
         <div class="hero-photo-frame hover-trigger" data-hover-label="DARIA">
-          <img src="daria.jpg" alt="Дарья Горелик — Дизайнер интерьера" data-name="daria.jpg" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600'">
+          <img src="daria.jpg" alt="Дарья Горелик — Дизайнер интерьера" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600'">
           <div class="hero-accent-tag">
             <strong>Дарья Горелик</strong>
             <span>Автор дизайн-проектов</span>
@@ -1232,7 +1210,7 @@
       </div>
     </section>
 
-    <!-- РАЗДЕЛ "ВЫПОЛНЕННЫЕ ПРОЕКТЫ" -->
+    <!-- ПРОЕКТЫ -->
     <section id="projects">
       <div class="section-header">
         <span class="section-subtitle">Портфолио</span>
@@ -1241,10 +1219,9 @@
 
       <div class="projects-container">
         
-        <!-- КАРТОЧКА ПРОЕКТА КРОНШТАДТ -->
         <div class="project-card-btn hover-trigger" data-hover-label="OPEN" onclick="openProjectModal('modal-kronstadt')">
           <div class="project-preview-wrap">
-            <img class="project-preview-img" src="4.jpg" alt="Апартаменты в Кронштадте" data-name="4.jpg" onerror="this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800'">
+            <img class="project-preview-img" src="4.jpg" alt="Апартаменты в Кронштадте" onerror="this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800'">
             <div class="project-count-badge">Кейс • 10 ракурсов</div>
           </div>
           <div class="project-card-content">
@@ -1280,7 +1257,6 @@
           </div>
         </div>
 
-        <!-- ТИЗЕР БУДУЩЕГО ПРОЕКТА -->
         <div class="project-card-btn" style="background: var(--sand-accent); border-style: dashed; justify-content: center; align-items: center; text-align: center; padding: 35px 25px;">
           <div style="font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--olive-light); margin-bottom: 10px;">DG</div>
           <h3 style="font-family: 'Playfair Display', serif; font-size: 1.45rem; color: var(--text-dark); margin-bottom: 8px;">Проект в реализации</h3>
@@ -1291,7 +1267,7 @@
       </div>
     </section>
 
-    <!-- КАЛЬКУЛЯТОР СТОИМОСТИ -->
+    <!-- КАЛЬКУЛЯТОР С НОВЫМИ ТАРИФАМИ -->
     <section id="calc">
       <div class="section-header">
         <span class="section-subtitle">Калькулятор</span>
@@ -1316,17 +1292,17 @@
                 <span>Формат дизайн-проекта</span>
               </div>
               <div class="tariff-selector">
-                <div class="tariff-option" onclick="setTariff(2500, '3-4 недели', this)">
+                <div class="tariff-option" onclick="setTariff(800, '3-4 недели', this)">
                   <h5>Планировка</h5>
-                  <span>2 500 ₽/м²</span>
+                  <span>800 ₽/м²</span>
                 </div>
-                <div class="tariff-option active" onclick="setTariff(4500, '6-8 недель', this)">
+                <div class="tariff-option active" onclick="setTariff(1500, '6-8 недель', this)">
                   <h5>Полный проект</h5>
-                  <span>4 500 ₽/м²</span>
+                  <span>1 500 ₽/м²</span>
                 </div>
-                <div class="tariff-option" onclick="setTariff(6000, '8-12 недель', this)">
+                <div class="tariff-option" onclick="setTariff(3000, '8-12 недель', this)">
                   <h5>All Inclusive</h5>
-                  <span>6 000 ₽/м²</span>
+                  <span>3 000 ₽/м²</span>
                 </div>
               </div>
             </div>
@@ -1335,7 +1311,7 @@
 
           <div class="calc-summary-card">
             <h4>Ориентировочная стоимость</h4>
-            <div class="calc-price" id="total-price">292 500 ₽</div>
+            <div class="calc-price" id="total-price">97 500 ₽</div>
             <div class="calc-term" id="project-term">Срок: ~6-8 недель</div>
             <a href="#contacts" class="btn btn-primary" style="width: 100%;">Зафиксировать расчет</a>
           </div>
@@ -1344,7 +1320,6 @@
       </div>
     </section>
 
-    <!-- О ДИЗАЙНЕРЕ -->
     <section id="about">
       <div class="section-header">
         <span class="section-subtitle">Об авторе</span>
@@ -1369,7 +1344,6 @@
       </div>
     </section>
 
-    <!-- FAQ -->
     <section id="faq">
       <div class="section-header">
         <span class="section-subtitle">Ответы на вопросы</span>
@@ -1377,7 +1351,6 @@
       </div>
 
       <div class="faq-list">
-        
         <div class="faq-item" onclick="toggleFaq(this)">
           <div class="faq-question">
             <span>Сколько времени занимает создание проекта?</span>
@@ -1407,11 +1380,9 @@
             Да, в рамках авторского сопровождения я беру на себя контроль поставок, согласование образцов выкрасов и предоставление партнерских скидок.
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- ФОРМА КОНТАКТОВ -->
     <section id="contacts">
       <div class="contact-wrapper">
         <div class="contact-info">
@@ -1459,7 +1430,6 @@
       </div>
     </section>
 
-    <!-- Подвал -->
     <footer>
       <div>© 2026 Студия дизайна интерьера Дарьи Горелик.</div>
       <div>DG | Daria Gorelik Interior Architecture</div>
@@ -1467,7 +1437,7 @@
 
   </div>
 
-  <!-- МОДАЛЬНОЕ ОКНО ПРОЕКТА КРОНШТАДТ -->
+  <!-- МОДАЛЬНОЕ ОКНО С ГАЛЕРЕЕЙ -->
   <div id="modal-kronstadt" class="project-modal" onclick="closeOnOutside(event, this)">
     <div class="modal-dialog">
       <div class="modal-header-banner">
@@ -1481,7 +1451,7 @@
         <div class="modal-gallery-grid">
           
           <div class="modal-photo-card full-width" onclick="openLightbox(this)">
-            <img src="4.jpg" alt="Гостиная" data-name="4.jpg" onerror="this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800'">
+            <img src="4.jpg" alt="Гостиная" onerror="this.src='https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800'">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Гостиная: флористическое панно</span>
               <span class="modal-photo-zone">Гостиная</span>
@@ -1489,7 +1459,7 @@
           </div>
 
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="7.jpg" alt="Столовая" data-name="7.jpg">
+            <img src="7.jpg" alt="Столовая">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Обеденная зона и витраж</span>
               <span class="modal-photo-zone">Столовая</span>
@@ -1497,7 +1467,7 @@
           </div>
 
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="8.jpg" alt="Диван" data-name="8.jpg">
+            <img src="8.jpg" alt="Диван">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Терракотовый диван и ковер</span>
               <span class="modal-photo-zone">Гостиная</span>
@@ -1505,7 +1475,7 @@
           </div>
 
           <div class="modal-photo-card full-width" onclick="openLightbox(this)">
-            <img src="6.jpg" alt="Кухня" data-name="6.jpg">
+            <img src="6.jpg" alt="Кухня">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Кухня: орех и рифленое стекло</span>
               <span class="modal-photo-zone">Кухня</span>
@@ -1513,7 +1483,7 @@
           </div>
 
           <div class="modal-photo-card full-width" onclick="openLightbox(this)">
-            <img src="кровать%201.jpg" alt="Спальня" data-name="кровать 1.jpg">
+            <img src="1.jpg" alt="Спальня">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Спальня: изумруд и хрусталь</span>
               <span class="modal-photo-zone">Спальня</span>
@@ -1521,7 +1491,7 @@
           </div>
 
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="тв.jpg" alt="ТВ зона" data-name="тв.jpg">
+            <img src="2.jpg" alt="Медиазона">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Медиазона с подсветкой</span>
               <span class="modal-photo-zone">Спальня</span>
@@ -1529,7 +1499,7 @@
           </div>
 
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="стена%201.jpg" alt="Скрытая дверь" data-name="стена 1.jpg">
+            <img src="3.jpg" alt="Скрытая дверь">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Скрытая дверь в гардеробную</span>
               <span class="modal-photo-zone">Спальня</span>
@@ -1537,7 +1507,7 @@
           </div>
 
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="тумба%201.jpg" alt="Тумба" data-name="тумба 1.jpg">
+            <img src="5.jpg" alt="Тумба">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Прикроватная зона и шпон</span>
               <span class="modal-photo-zone">Детали</span>
@@ -1545,7 +1515,7 @@
           </div>
 
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="консоль%201.jpg" alt="Консоль" data-name="консоль 1.jpg">
+            <img src="9A.jpg" alt="Консоль">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Туалетный столик с зеркалом</span>
               <span class="modal-photo-zone">Консоль</span>
@@ -1553,7 +1523,7 @@
           </div>
 
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="консоль%20близко%201.jpg" alt="Консоль близко" data-name="консоль близко 1.jpg">
+            <img src="10A.jpg" alt="Консоль близко">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Текстуры обоев и бра</span>
               <span class="modal-photo-zone">Консоль</span>
@@ -1561,33 +1531,17 @@
           </div>
 
           <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="консоль.jpg" alt="Свет над консолью" data-name="консоль.jpg">
+            <img src="11A.jpg" alt="Свет над консолью">
             <div class="modal-photo-info">
               <span class="modal-photo-title">Стеклянные подвесы</span>
               <span class="modal-photo-zone">Свет</span>
             </div>
           </div>
 
-          <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="гардероб%202.jpg" alt="Гардероб" data-name="гардероб 2.jpg">
-            <div class="modal-photo-info">
-              <span class="modal-photo-title">Перспектива гардеробной</span>
-              <span class="modal-photo-zone">Гардероб</span>
-            </div>
-          </div>
-
-          <div class="modal-photo-card" onclick="openLightbox(this)">
-            <img src="гардероб%203.jpg" alt="Стеллажи" data-name="гардероб 3.jpg">
-            <div class="modal-photo-info">
-              <span class="modal-photo-title">Стеллажи для аксессуаров</span>
-              <span class="modal-photo-zone">Гардероб</span>
-            </div>
-          </div>
-
           <div class="modal-photo-card full-width" onclick="openLightbox(this)">
-            <img src="гардероб%204.jpg" alt="Открытая система" data-name="гардероб 4.jpg">
+            <img src="12A.jpg" alt="Гардеробная">
             <div class="modal-photo-info">
-              <span class="modal-photo-title">Система вешал со светом</span>
+              <span class="modal-photo-title">Гардеробная: система хранения со светом</span>
               <span class="modal-photo-zone">Гардероб</span>
             </div>
           </div>
@@ -1597,13 +1551,11 @@
     </div>
   </div>
 
-  <!-- ЛАЙТБОКС -->
   <div id="lightbox" class="lightbox" onclick="this.style.display='none'">
     <img id="lightbox-img" src="" alt="Детали проекта">
   </div>
 
   <script>
-    // 1. Мобильное меню
     function toggleMobileMenu() {
       const menu = document.getElementById('mobile-menu');
       const btn = document.getElementById('burger-toggle');
@@ -1612,7 +1564,6 @@
       document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : 'auto';
     }
 
-    // 2. Прогресс скролла
     window.addEventListener('scroll', () => {
       const winScroll = document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -1620,7 +1571,6 @@
       document.getElementById('scroll-progress').style.width = scrolled + '%';
     });
 
-    // 3. Кастомный курсор (только десктоп)
     if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
       const cursor = document.getElementById('cursor');
       const follower = document.getElementById('cursor-follower');
@@ -1643,8 +1593,8 @@
       });
     }
 
-    // 4. Калькулятор
-    let currentRate = 4500;
+    // Калькулятор с обновленными ставками
+    let currentRate = 1500;
     let currentTerm = '6-8 недель';
 
     function setTariff(rate, term, element) {
@@ -1663,7 +1613,6 @@
       document.getElementById('project-term').innerText = 'Срок: ~' + currentTerm;
     }
 
-    // 5. FAQ
     function toggleFaq(element) {
       const isActive = element.classList.contains('active');
       document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
@@ -1672,7 +1621,6 @@
       }
     }
 
-    // 6. Модальное окно и Лайтбокс
     function openProjectModal(modalId) {
       const modal = document.getElementById(modalId);
       if (modal) {
